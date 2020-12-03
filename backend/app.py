@@ -20,7 +20,6 @@ ma = Marshmallow(app)
 
 bcrypt = Bcrypt(app)
 
-# ! Hello world flask app to start you off.
-@app.route('/')
-def index():
-    return "Hello, World!"
+from controllers import user_cont
+
+app.register_blueprint(user_cont.router, url_prefix="/api")

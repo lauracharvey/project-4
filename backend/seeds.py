@@ -2,12 +2,16 @@ from app import app, db
 from models.user_model import User
 
 with app.app_context():
+  db.drop_all()
+  db.create_all()
+
   harry = User(
-    first_name = db.Column(db.String(50), nullable=False, unique=True)
-    email = db.Column(db.String(128), nullable=False, unique=True)
-    bio = db.Column(db.String(128), nullable=True)
-    location
-    age
-    images
-    socials
+    first_name='Harry',
+    email='harry@harry.com',
+    password='harry',
+    bio='Hi, please can someone spoon me?',
+    location='CT1',
+    age='22'
   )
+
+  harry.save()

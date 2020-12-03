@@ -15,7 +15,7 @@ def signup():
 @router.route('/login', methods=['POST'])
 def login():
   data = request.get_json()
-  user = User.query.filter_by(username=data['username']).first()
+  user = User.query.filter_by(email=data['email']).first()
 
   if not user:
     return { 'message': 'No user found' }, 200

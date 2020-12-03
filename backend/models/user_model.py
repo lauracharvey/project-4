@@ -1,5 +1,5 @@
 from app import db, bcrypt
-from models.base import BaseModel
+from models.base_model import BaseModel
 from sqlalchemy.ext.hybrid import hybrid_property
 from datetime import *
 import jwt
@@ -11,14 +11,14 @@ class User(db.Model, BaseModel):
   first_name = db.Column(db.String(50), nullable=False, unique=True)
   email = db.Column(db.String(128), nullable=False, unique=True)
   bio = db.Column(db.String(128), nullable=True)
-  # ! Interests
-  # ! Matches
-  # ! Report
   password_hash = db.Column(db.String(128), nullable=True)
   location = db.Column(db.String(30), nullable=False)
   age = db.Column(db.Integer, nullable=False)
-  images = db.Column(db.Array, nullable=True)
-  socials = db.Column(db.Array, nullable=True)
+  # ! Interests
+  # ! Images
+  # ! Socials
+  # ! Matches
+  # ! Report
 
   @hybrid_property
   def password(self):
