@@ -1,6 +1,7 @@
 from flask import Blueprint, request
 from models.user_model import User
 from serializers.populate_user_schema import PopulateUserSchema
+from models.images_model import Images
 
 user_schema = PopulateUserSchema()
 
@@ -9,6 +10,10 @@ router = Blueprint(__name__, 'users')
 @router.route('/signup', methods=['POST'])
 def signup():
   user = user_schema.load(request.get_json())
+  template_images = Images(
+    image1='https://res.cloudinary.com/spoondr/image/upload/v1607006914/Portrait_Placeholder_zu9uoa.png'
+  )
+  user.images = [template_images]
   user.save()
   return user_schema.jsonify(user), 200
 
