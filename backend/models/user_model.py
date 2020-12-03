@@ -1,6 +1,10 @@
 from app import db, bcrypt
 from models.base_model import BaseModel
 from sqlalchemy.ext.hybrid import hybrid_property
+from models.interests_model import Interests
+from models.socials_model import Socials
+from models.user_interests import user_interests_join
+from models.user_socials import user_socials_join
 from datetime import *
 import jwt
 from environment.config import secret
@@ -14,9 +18,9 @@ class User(db.Model, BaseModel):
   password_hash = db.Column(db.String(128), nullable=True)
   location = db.Column(db.String(30), nullable=False)
   age = db.Column(db.Integer, nullable=False)
-  # ! Interests
+  interests = db.relationship('Interests', secondary=user_interests_join, backref='users')
+  socials = db.relationship('Socials', secondary=user_socials_join, backref='users')
   # ! Images
-  # ! Socials
   # ! Matches
   # ! Report
 

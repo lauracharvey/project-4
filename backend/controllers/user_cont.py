@@ -26,3 +26,9 @@ def login():
   token = user.generate_token()
 
   return { 'message': 'Welcome back!',  'token': token }
+
+@router.route('/users', methods=['GET'])
+def index_users():
+  users = User.query.all()
+  
+  return user_schema.jsonify(users, many=True), 200
