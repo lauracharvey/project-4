@@ -14,9 +14,9 @@ def create_interests(user_id):
   interest_data = request.get_json()
   user = User.query.get(user_id)
   interest = interests_schema.load(interest_data)
-  interest.user = user
-  interest.save()
-  return interests_schema.jsonify(interest, many=True), 200
+  user.interests.append(interest)
+  user.save()
+  return interests_schema.jsonify(interest), 200
 
 
 @router.route('/interests', methods=['GET'])
