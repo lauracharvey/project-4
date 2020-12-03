@@ -6,7 +6,8 @@ class Socials(db.Model, BaseModel):
 
   __tablename__ = 'socials'
 
-  Instagram = db.Column(db.String(128), unique=True, nullable=True)
-  Facebook = db.Column(db.String(128), unique=True, nullable=True)
-  LinkedIn = db.Column(db.String(128), unique=True, nullable=True)
-  Spotify = db.Column(db.String(128), unique=True, nullable=True)
+  id = db.Column(db.Integer, primary_key=True)
+  Instagram = db.Column(db.String(128), nullable=True)
+  Facebook = db.Column(db.String(128), nullable=True)
+  LinkedIn = db.Column(db.String(128), nullable=True)
+  Spotify = db.Column(db.String(128), nullable=True)

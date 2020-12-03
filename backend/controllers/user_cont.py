@@ -15,7 +15,7 @@ def signup():
     image1='https://res.cloudinary.com/spoondr/image/upload/v1607006914/Portrait_Placeholder_zu9uoa.png'
   )
   template_social= Socials(
-    Instagram='https://www.instagram.com'
+    Instagram ='https://www.instagram.com'
   )
   user.images = [template_images]
   user.socials = [template_social]

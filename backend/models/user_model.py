@@ -14,6 +14,7 @@ from environment.config import secret
 class User(db.Model, BaseModel):
   __tablename__ = 'users'
 
+  id = db.Column(db.Integer, primary_key=True)
   first_name = db.Column(db.String(50), nullable=False, unique=True)
   email = db.Column(db.String(128), nullable=False, unique=True)
   bio = db.Column(db.String(128), nullable=True)

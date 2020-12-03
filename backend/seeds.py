@@ -12,6 +12,10 @@ with app.app_context():
   spooning = Interests(
     name='Spooning'
   )
+
+  tennis = Interests(
+    name='tennis'
+  )
   spooning.save()
   print('🕺 🕺 🕺')
 
