@@ -1,8 +1,8 @@
 from flask import Blueprint, request
 from models.user_model import User
-from serializers.user_schema import UserSchema
+from serializers.populate_user_schema import PopulateUserSchema
 
-user_schema = UserSchema()
+user_schema = PopulateUserSchema()
 
 router = Blueprint(__name__, 'users')
 

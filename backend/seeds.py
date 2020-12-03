@@ -6,6 +6,13 @@ with app.app_context():
   print('🌱 🌱 🌱')
   db.drop_all()
   db.create_all()
+  
+  coding = Interests(
+    name='Coding'
+  )
+  coding.save()
+    
+  print('🕺 🕺 🕺')
 
   harry = User(
     first_name='Harry',
@@ -13,15 +20,11 @@ with app.app_context():
     password='harry',
     bio='Hi, please can someone spoon me?',
     location='CT1',
-    age='22'
+    age='22',
+    interests=[coding]
   )
   harry.save()
 
   print('🥸  🥸  🥸')
 
-  coding = Interests(
-    name='Coding'
-  )
-  coding.save()
   
-  print('🕺 🕺 🕺')

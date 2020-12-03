@@ -16,12 +16,12 @@ def create_interests(user_id):
   interest = interests_schema.load(interest_data)
   interest.user = user
   interest.save()
-  return interests_schema.jsonify(interest)
+  return interests_schema.jsonify(interest, many=True), 200
 
 
 
 @router.route('/interests', methods=['GET'])
 def interests_index():
-  interests = Interest.query.all()
+  interests = Interests.query.all()
   
   return interests_schema.jsonify(interests, many=True), 200
