@@ -9,16 +9,16 @@ with app.app_context():
   db.drop_all()
   db.create_all()
   
-  coding = Interests(
-    name='Coding'
+  spooning = Interests(
+    name='Spooning'
   )
-  coding.save()
+  spooning.save()
+  print('🕺 🕺 🕺')
 
   harry_socials = Socials(
     Instagram='https://www.instagram.com/harrytxdd/'
   )
-    
-  print('🕺 🕺 🕺')
+  print('🤳 🤳 🤳')
 
   harry_images = Images(
     image1='https://res.cloudinary.com/spoondr/image/upload/v1606992150/another_harry_qityxz.jpg'
@@ -32,7 +32,7 @@ with app.app_context():
     bio='Hi, please can someone spoon me?',
     location='CT1',
     age='22',
-    interests=[coding],
+    interests=[spooning],
     socials=[harry_socials],
     images=[harry_images]
   )
