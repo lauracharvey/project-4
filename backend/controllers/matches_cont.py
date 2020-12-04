@@ -16,17 +16,20 @@ def like_user(user_id):
   liked_user = User.query.get(user_id)
   existing_matches = Matches.query.get(user_id)
   existing_curr_matches = Matches.query.get(g.current_user.id)
-  
-  print(existing_matches.LikedBy)
 
+
+  if liked_user.id in existing_curr_matches.LikedBy :
+    existing_matches.Matched.append(g.current_user.id)
+    existing_curr_matches.Matched.append(user_id)
+    existing_matches.save()
+    existing_curr_matches.save()
+    return user_schema.jsonify(liked_user), 200
+  
   existing_matches.LikedBy.append(g.current_user.id)
   existing_curr_matches.Liked.append(user_id)
 
-  print(existing_matches.LikedBy)
   existing_matches.save()
   existing_curr_matches.save()
 
-  # liked_user.save()
-  # g.current_user.save()
 
   return user_schema.jsonify(liked_user), 200
