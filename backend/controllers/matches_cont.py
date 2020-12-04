@@ -17,12 +17,12 @@ def like_user(user_id):
   existing_matches = Matches.query.get(user_id)
   existing_curr_matches = Matches.query.get(g.current_user.id)
   
-  likedby = existing_matches.LikedBy.append(g.current_user.id)
-  like = existing_curr_matches.Liked.append(user_id)
+  print(existing_matches.LikedBy)
 
-  matches_schema.load(likedby)
-  matches_schema.load(like)
+  existing_matches.LikedBy.append(g.current_user.id)
+  existing_curr_matches.Liked.append(user_id)
 
+  print(existing_matches.LikedBy)
   existing_matches.save()
   existing_curr_matches.save()
 
