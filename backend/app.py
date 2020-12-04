@@ -20,7 +20,10 @@ ma = Marshmallow(app)
 
 bcrypt = Bcrypt(app)
 
-from controllers import user_cont, interests_cont
+from controllers import user_cont, interests_cont, images_cont, socials_cont, matches_cont
 
 app.register_blueprint(user_cont.router, url_prefix="/api")
 app.register_blueprint(interests_cont.router, url_prefix="/api")
+app.register_blueprint(images_cont.router, url_prefix="/api")
+app.register_blueprint(socials_cont.router, url_prefix="/api")
+app.register_blueprint(matches_cont.router, url_prefix="/api")

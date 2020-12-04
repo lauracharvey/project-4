@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, g
 from models.user_model import User
 from serializers.populate_user_schema import PopulateUserSchema
 from models.images_model import Images
@@ -23,7 +23,9 @@ def signup():
   user.save()
 
   template_match = Matches(
-    Liked=[user.id]
+    Liked=[user.id],
+    LikedBy=[],
+    Matched=[]
   )
   user.matches.append(template_match)
   user.save()

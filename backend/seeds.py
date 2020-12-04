@@ -44,7 +44,9 @@ with app.app_context():
   harry.save()
 
   harry_match = Matches(
-    Liked=[harry.id]
+    Liked=[harry.id],
+    LikedBy=[],
+    Matched=[]
   )
 
   harry.matches.append(harry_match)
@@ -61,7 +63,9 @@ with app.app_context():
   laura.save()
 
   laura_match = Matches(
-    Liked=[laura.id]
+    Liked=[laura.id],
+    LikedBy=[],
+    Matched=[]
   )
 
   laura.matches.append(laura_match)
@@ -79,7 +83,9 @@ with app.app_context():
   lee.save()
 
   lee_match = Matches(
-    Liked=[lee.id]
+    Liked=[lee.id],
+    LikedBy=[],
+    Matched=[]
   )
 
   lee.matches.append(lee_match)
