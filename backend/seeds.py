@@ -3,6 +3,7 @@ from models.user_model import User
 from models.interests_model import Interests
 from models.socials_model import Socials
 from models.images_model import Images
+from models.matches_model import Matches
 
 with app.app_context():
   print('🌱 🌱 🌱')
@@ -42,6 +43,51 @@ with app.app_context():
   )
   harry.save()
 
+  harry_match = Matches(
+    Liked=[harry.id]
+  )
+
+  harry.matches.append(harry_match)
+  harry.save()
+
+  laura = User(
+    first_name='Laura',
+    email='laura@laura.com',
+    password='laura',
+    bio='Spoon dogs not humans',
+    location='ME14',
+    age='21'
+  )
+  laura.save()
+
+  laura_match = Matches(
+    Liked=[laura.id]
+  )
+
+  laura.matches.append(laura_match)
+  laura.save()
+
+
+  lee = User(
+    first_name='Lee',
+    email='lee@lee.com',
+    password='lee',
+    bio='PUT THE PHONE BACK',
+    location='PE19',
+    age='23'
+  )
+  lee.save()
+
+  lee_match = Matches(
+    Liked=[lee.id]
+  )
+
+  lee.matches.append(lee_match)
+  lee.save()
+
+
   print('🥸  🥸  🥸')
+
+
 
   

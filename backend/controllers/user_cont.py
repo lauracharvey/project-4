@@ -3,6 +3,7 @@ from models.user_model import User
 from serializers.populate_user_schema import PopulateUserSchema
 from models.images_model import Images
 from models.socials_model import Socials
+from models.matches_model import Matches
 
 user_schema = PopulateUserSchema()
 
@@ -19,6 +20,12 @@ def signup():
   )
   user.images = [template_images]
   user.socials = [template_social]
+  user.save()
+
+  template_match = Matches(
+    Liked=[user.id]
+  )
+  user.matches.append(template_match)
   user.save()
   return user_schema.jsonify(user), 200
 

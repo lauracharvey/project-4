@@ -14,7 +14,7 @@ router = Blueprint(__name__, 'images')
 def images_index():
   images = Images.query.all()
 
-  return images_schema.jsonify(images, many=True),200
+  return images_schema.jsonify(images, many=True), 200
 
 
 @router.route('/users/<int:user_id>/images', methods=['PUT'])
@@ -32,7 +32,7 @@ def create_images(user_id):
 
   image.save()
 
-  return images_schema.jsonify(image), 201
+  return images_schema.jsonify(image), 200
 
 
 @router.route('/users/<int:user_id>/images', methods=['GET'])

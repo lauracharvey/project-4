@@ -12,9 +12,9 @@ router = Blueprint(__name__, 'interests')
 
 @router.route('/socials', methods=['GET'])
 def socials_index():
-  socials = socials.query.all()
+  social = Socials.query.all()
 
-  return socials_schema.jsonify(socials, many=True),200
+  return socials_schema.jsonify(social, many=True),200
 
 @router.route('/users/<int:user_id>/socials', methods=['PUT'])
 def create_socials(user_id): 
@@ -33,6 +33,6 @@ def create_socials(user_id):
 
 @router.route('/users/<int:user_id>/socials', methods=['GET'])
 def single_user_socials(user_id):
-  existing_socials = socials.query.get(user_id)
+  existing_socials = Socials.query.get(user_id)
 
   return socials_schema.jsonify(existing_socials), 200
