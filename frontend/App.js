@@ -4,6 +4,7 @@ import './styles/style.scss'
 
 import Login from './components/LoginHome'
 import SignUp from './components/BasicSignUp'
+import Matches from './components/Matches'
 
 
 const App = () => (
@@ -11,6 +12,7 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={Login} />
       <Route exact path="/signup" component={SignUp} />
+      <Route exact path="/matches" component={Matches} />
     </Switch>
   </BrowserRouter>
 )
