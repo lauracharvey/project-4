@@ -5,10 +5,12 @@ from models.interests_model import Interests
 from models.socials_model import Socials
 from models.images_model import Images
 from models.matches_model import Matches
+from models.chat_model import Chat
 from models.user_interests import user_interests_join
 from models.user_socials import user_socials_join
 from models.user_images import user_images_join
 from models.user_matches import user_matches_join
+from models.user_chats import user_chats_join
 from datetime import *
 import jwt
 from environment.config import secret
@@ -27,6 +29,7 @@ class User(db.Model, BaseModel):
   socials = db.relationship('Socials', secondary=user_socials_join, backref='users')
   images = db.relationship('Images', secondary=user_images_join, backref='users')
   matches = db.relationship('Matches', secondary=user_matches_join, backref='users')
+  chats = db.relationship('Chats', secondary=user_chats_join, backref='users')
   # ! Report
 
   @hybrid_property

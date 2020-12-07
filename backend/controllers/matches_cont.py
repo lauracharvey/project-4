@@ -2,11 +2,14 @@ from flask import Blueprint, request, g
 from models.user_model import User
 from serializers.populate_user_schema import PopulateUserSchema
 from models.matches_model import Matches
+from models.chat_model import Chats
 from serializers.matches_schema import MatchesSchema
+from serializers.chats_schema import ChatsSchema
 from middleware.secure_route import secure_route
 
 user_schema = PopulateUserSchema()
 matches_schema = MatchesSchema()
+chats_schema = ChatsSchema()
 
 router = Blueprint(__name__, 'matches')
 
@@ -23,6 +26,18 @@ def like_user(user_id):
     existing_curr_matches.Matched.append(user_id)
     existing_matches.save()
     existing_curr_matches.save()
+
+    new_chat = Chats(
+      user1 = g.current_user.id,
+      user2 = liked_user
+    )
+
+    liked_user.append(new_chat)
+    g.current_user.append(new_chat)
+
+    liked_user.save()
+    g.current_user.save()
+
     return user_schema.jsonify(liked_user), 200
   
   existing_matches.LikedBy.append(g.current_user.id)
