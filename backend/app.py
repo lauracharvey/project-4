@@ -31,7 +31,7 @@ app.register_blueprint(interests_cont.router, url_prefix="/api")
 app.register_blueprint(images_cont.router, url_prefix="/api")
 app.register_blueprint(socials_cont.router, url_prefix="/api")
 app.register_blueprint(matches_cont.router, url_prefix="/api")
-app.register_blueprint(chat_cont.router)
+app.register_blueprint(chat_cont.router, url_prefix="/api")
 
 if __name__ == '__main__':
     sio.run(app)

@@ -13,10 +13,9 @@ const ChatPage = (props) => {
   const [currentUser, updateCurrentUser] = useState('Lee')
 
   const getMessages = () => {
-    socket.on('message', msg => {
-      console.log(msg)
-
-      setMessages([...messages, msg.message])
+    socket.on('receive_message', function (data) {
+      console.log(data)
+      setMessages([...messages, data.message])
     })
   }
 
@@ -40,7 +39,7 @@ const ChatPage = (props) => {
 
   const onClick = () => {
     if (message !== '') {
-      socket.emit('message', {
+      socket.emit('send_message', {
         username: `${currentUser}`,
         room: `${props.match.params.chatID}`,
         message: message
