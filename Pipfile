@@ -13,6 +13,8 @@ marshmallow-sqlalchemy = "*"
 psycopg2-binary = "*"
 flask-bcrypt = "*"
 pyjwt = "*"
+flask-socketio = "*"
+socketio-client = "*"
 
 [requires]
 python_version = "3.9"
