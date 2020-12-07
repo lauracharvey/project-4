@@ -4,6 +4,7 @@ from serializers.populate_user_schema import PopulateUserSchema
 from models.images_model import Images
 from models.socials_model import Socials
 from models.matches_model import Matches
+from marshmallow import ValidationError
 
 user_schema = PopulateUserSchema()
 
@@ -51,3 +52,25 @@ def index_users():
   users = User.query.all()
   
   return user_schema.jsonify(users, many=True), 200
+
+@router.route('/users/<int:user_id>', methods=['GET'])
+def get_single_user(user_id):
+  user = User.query.get(user_id)
+  return user_schema.jsonify(user), 200
+
+@router.route('users/<int:user_id>/update', methods=['PUT'])
+def update_user(user_id):
+  existing_user = User.query.get(user_id)
+  
+  try:
+    user = user_schema.load(
+      request.get_json(),
+      instance=existing_user,
+      partial=True
+    )
+  except ValidationError as e:
+    return {'errors': e.messages, 'message': 'Something went wrong'}
+
+  user.save()
+  
+  return user_schema.jsonify(user), 200

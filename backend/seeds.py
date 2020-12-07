@@ -15,9 +15,15 @@ with app.app_context():
   )
 
   tennis = Interests(
-    name='tennis'
+    name='Tennis'
+  )
+
+  football = Interests(
+    name='Football'
   )
   spooning.save()
+  tennis.save()
+  football.save()
   print('🕺 🕺 🕺')
 
   harry_socials = Socials(
@@ -79,7 +85,6 @@ with app.app_context():
 
   laura.matches.append(laura_match)
   laura.save()
-
 
   lee = User(
     first_name='Lee',
