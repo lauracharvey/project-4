@@ -6,6 +6,7 @@ from serializers.user_schema import UserSchema
 from serializers.socials_schema import SocialsSchema
 from serializers.images_schema import ImagesSchema
 from serializers.matches_schema import MatchesSchema
+from serializers.chats_schema import ChatsSchema
 
 class PopulateUserSchema(UserSchema):
 
@@ -13,5 +14,6 @@ class PopulateUserSchema(UserSchema):
   socials = fields.Nested('SocialsSchema', many=True)
   images = fields.Nested('ImagesSchema', many=True)
   matches = fields.Nested('MatchesSchema', many=True)
+  chats = fields.Nested('ChatsSchema', many=True)
 
 

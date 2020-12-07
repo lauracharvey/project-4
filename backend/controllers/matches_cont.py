@@ -29,11 +29,12 @@ def like_user(user_id):
 
     new_chat = Chats(
       user1 = g.current_user.id,
-      user2 = liked_user
+      user2 = liked_user.id
     )
 
-    liked_user.append(new_chat)
-    g.current_user.append(new_chat)
+    liked_user.chats.append(new_chat)
+
+    g.current_user.chats.append(new_chat)
 
     liked_user.save()
     g.current_user.save()
@@ -48,3 +49,10 @@ def like_user(user_id):
 
 
   return user_schema.jsonify(liked_user), 200
+
+@router.route('/users/matches', methods=['GET'])
+@secure_route
+def get_matches():
+  
+  current_matches = Matches.query.get(g.current_user.id)
+  return matches_schema.jsonify(current_matches)
