@@ -6,12 +6,12 @@ const Signup = (props) => {
 
   const [signupFormData, updateSignupFormData] = useState({
     first_name: '',
-    email:'',
-    password:'',
-    passwordConfirmation:'',
-    bio:'',
-    location:'',
-    age:''
+    email: '',
+    password: '',
+    password_confirmation: '',
+    bio: '',
+    location: '',
+    age: ''
   })
 
   function handleChange(event) {
@@ -28,7 +28,7 @@ const Signup = (props) => {
     event.preventDefault()
     axios.post('/api/signup', signupFormData)
       .then(res => {
-        props.history.push('/swipes')
+        props.history.push('/')
       })
   }
 
@@ -36,12 +36,12 @@ const Signup = (props) => {
     <img src={Logo} alt="Logo"/>
     <h1>Sign Up</h1>
     <form onSubmit={handleSubmit}>
-      <label>username
+      <label>first name
         <input
           type="text"
           onChange={handleChange}
-          value={signupFormData.username}
-          name="username"
+          value={signupFormData.first_name}
+          name="first_name"
         />
       </label>
 
@@ -67,14 +67,16 @@ const Signup = (props) => {
         <input
           type="password"
           onChange={handleChange}
-          value={signupFormData.passwordConfirmation}
-          name="passwordConfirmation"
+          value={signupFormData.password_confirmation}
+          name="password_confirmation"
         />
       </label>
 
       <label>age
         <input
-          type=""
+          type="number"
+          min="18"
+          inputMode="numeric"
           onChange={handleChange}
           value={signupFormData.age}
           name="age"
@@ -82,7 +84,8 @@ const Signup = (props) => {
       </label>
 
       <label>first half of your postcode
-        <textarea
+        <input
+          type="text"
           onChange={handleChange}
           value={signupFormData.location}
           name="location"

@@ -23,10 +23,17 @@ with app.app_context():
   harry_socials = Socials(
     Instagram='https://www.instagram.com/harrytxdd/'
   )
+
+  laura_socials = Socials(
+    Instagram='https://www.instagram.com/'
+  )
   print('🤳 🤳 🤳')
 
   harry_images = Images(
     image1='https://res.cloudinary.com/spoondr/image/upload/v1606992150/another_harry_qityxz.jpg'
+  )
+  laura_images = Images(
+    image1='https://res.cloudinary.com/spoondr/image/upload/v1607339132/husky_puppy_vbsiyi.jpg'
   )
   print('📸 📸 📸')
 
@@ -58,7 +65,9 @@ with app.app_context():
     password='laura',
     bio='Spoon dogs not humans',
     location='ME14',
-    age='21'
+    age='21',
+    socials=[laura_socials],
+    images=[laura_images]
   )
   laura.save()
 
