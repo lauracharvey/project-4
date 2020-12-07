@@ -29,11 +29,12 @@ def like_user(user_id):
 
     new_chat = Chats(
       user1 = g.current_user.id,
-      user2 = liked_user
+      user2 = liked_user.id
     )
 
-    liked_user.chats = [new_chat]
-    g.current_user.chats = [new_chat]
+    liked_user.chats.append(new_chat)
+
+    g.current_user.chats.append(new_chat)
 
     liked_user.save()
     g.current_user.save()

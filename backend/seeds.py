@@ -27,12 +27,20 @@ with app.app_context():
   laura_socials = Socials(
     Instagram='https://www.instagram.com/'
   )
+
+  lee_socials = Socials(
+    Instagram='https://www.instagram.com/'
+  )
   print('🤳 🤳 🤳')
 
   harry_images = Images(
     image1='https://res.cloudinary.com/spoondr/image/upload/v1606992150/another_harry_qityxz.jpg'
   )
   laura_images = Images(
+    image1='https://res.cloudinary.com/spoondr/image/upload/v1607339132/husky_puppy_vbsiyi.jpg'
+  )
+
+  lee_images = Images(
     image1='https://res.cloudinary.com/spoondr/image/upload/v1607339132/husky_puppy_vbsiyi.jpg'
   )
   print('📸 📸 📸')
@@ -46,7 +54,8 @@ with app.app_context():
     age='22',
     interests=[spooning],
     socials=[harry_socials],
-    images=[harry_images]
+    images=[harry_images],
+    chats=[]
   )
   harry.save()
 
@@ -67,7 +76,8 @@ with app.app_context():
     location='ME14',
     age='21',
     socials=[laura_socials],
-    images=[laura_images]
+    images=[laura_images],
+    chats=[]
   )
   laura.save()
 
@@ -87,13 +97,16 @@ with app.app_context():
     password='lee',
     bio='PUT THE PHONE BACK',
     location='PE19',
-    age='23'
+    age='23',
+    socials=[lee_socials],
+    images=[lee_images],
+    chats=[]
   )
   lee.save()
 
   lee_match = Matches(
     Liked=[lee.id],
-    LikedBy=[],
+    LikedBy=[harry.id],
     Matched=[]
   )
 
