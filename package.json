@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "serve:frontend": "webpack-dev-server --mode=development",
-    "serve:backend": "pipenv run flask run"
+    "serve:backend": "pipenv run flask run",
+    "seed": "pipenv run python backend/seeds.py"
   },
   "author": "",
   "license": "ISC",
