@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import Logo from '../images/Logo.jpg'
+import Logo from '../images/Logo.png'
 import axios from 'axios'
 
 const Home = (props) => {

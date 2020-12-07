@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "axios": "^0.21.0",
+    "file-loader": "^6.2.0",
     "react": "^16.14.0",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0"

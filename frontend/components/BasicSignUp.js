@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import Logo from '../images/Logo.jpg'
+import Logo from '../images/Logo.png'
 
-const Signup = () => {
+const Signup = (props) => {
 
   const [signupFormData, updateSignupFormData] = useState({
     first_name: '',
@@ -73,7 +73,8 @@ const Signup = () => {
       </label>
 
       <label>age
-        <textarea
+        <input
+          type=""
           onChange={handleChange}
           value={signupFormData.age}
           name="age"
