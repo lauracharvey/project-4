@@ -5,7 +5,7 @@ from models.interests_model import Interests
 from models.socials_model import Socials
 from models.images_model import Images
 from models.matches_model import Matches
-from models.chat_model import Chat
+from models.chat_model import Chats
 from models.user_interests import user_interests_join
 from models.user_socials import user_socials_join
 from models.user_images import user_images_join
