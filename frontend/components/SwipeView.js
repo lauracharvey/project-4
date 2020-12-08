@@ -2,6 +2,8 @@ import React, { useState, useEffect, useMemo } from 'react'
 import axios from 'axios'
 import TinderCard from 'react-tinder-card'
 import { getUserId } from '../lib/UserToken'
+import '../styles/otherStyles.scss'
+
 
 const Swipe = (props) => {
   const currUserID = getUserId()
@@ -34,7 +36,8 @@ const Swipe = (props) => {
 
   function filterMatched(resData, tempAllUsers) {
     if (resData.matches === undefined) return
-    const currLikes = resData.matches[0].Liked
+    const likeDislike = [...resData.matches[0].Liked, resData.matches[0].Disliked].flat()
+    const currLikes = likeDislike
     const filter = tempAllUsers.map(user => {
       const num = currLikes.indexOf(user.id)
       if (num !== -1) {
@@ -44,10 +47,39 @@ const Swipe = (props) => {
     return updateFilteredUsers(filter.filter(user => user !== undefined))
   }
   
-  const swiped = (direction, nameToDelete) => {
-    console.log('removing: ' + nameToDelete, direction)
-    setLastDirection(direction)
-    alreadyRemoved.push(nameToDelete)
+  const swiped = (direction, id) => {
+    const token = localStorage.getItem('token')
+    if (direction === 'right'){
+      setLastDirection(direction)
+      alreadyRemoved.push(id)
+      console.log('Right')
+      axios.put(`/api/users/${id}/like`,'', {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+        .then(resp => {
+          console.log(resp.data)
+        })
+    } else if (direction === 'left'){
+      setLastDirection(direction)
+      alreadyRemoved.push(id)
+      axios.put(`/api/users/${id}/dislike`,'', {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+        .then(resp => {
+          console.log(resp.data)
+        })
+      console.log('left', id)
+    } else if (direction === 'up'){
+      setLastDirection(direction)
+      alreadyRemoved.push(id)
+      console.log('up')
+      axios.put(`/api/users/${id}/like`,'', {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+        .then(resp => {
+          console.log(resp.data)
+        })
+    } 
   }
 
   const childRefs = useMemo(() => Array(filteredUsers.length).fill(0).map(i => React.createRef()), [])
@@ -60,7 +92,7 @@ const Swipe = (props) => {
   return <main className="main">
     <div className="cardContainer">
       {filteredUsers.map((user, index) => {
-        return <TinderCard ref={childRefs[index]} className='swipe' key={user.first_name} onSwipe={(dir) => swiped(dir, user.first_name)} >
+        return <TinderCard ref={childRefs[index]} className='swipe' key={user.first_name} onSwipe={(dir) => swiped(dir, user.id)} >
           <div style={{ backgroundImage: `url(${user.images[0].image1})` }} className='card'>
             <h3 className="name-age">{user.first_name} - {user.age}</h3>
           </div>
