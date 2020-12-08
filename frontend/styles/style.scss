@@ -6,8 +6,9 @@
   --mid: #faaa56;
   --brown: #76584b;
   --lightBrown: #b69a8b;
-  --extraLight: #e3cec3;
+  --extraLight: #f9f0ea;
   --grey: #686868;
+  --white: #ffffff;
   --heading: 'Yellowtail', cursive;
   --body: 'Montserrat', sans-serif;
 }
@@ -31,7 +32,7 @@ body {
 
 .loginMain {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background: rgb(211,98,49);
   background: linear-gradient(0deg, rgba(211,98,49,1) 30%, rgba(232,138,70,1) 71%);
   display: flex;
@@ -147,5 +148,159 @@ body {
     letter-spacing: -1px;
     font-weight: 500;
     border: none;
+  }
+}
+
+// FOOTER/NAVBAR
+
+footer {
+  width: 100vw;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: var(--white);
+
+  nav {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  img {
+    width: 40px;
+  }
+
+  .smallLogo {
+    width: 100px;
+  }
+}
+
+// HEADER 
+
+header {
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  h1 {
+    font-family: var(--heading);
+    font-size: 40px;
+  }
+}
+
+// SWIPE PAGE
+
+.swipeMain {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--extraLight);
+
+  .cardContainer {
+    width: 300px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .card {
+    position: relative;
+    width: 80vw;
+    max-width: 100%;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .swipe {
+    position: absolute;
+  }
+
+  .nameAge {
+    width: 100%;
+    height: 60px;
+    background: var(--white);
+    text-align: left;
+    font-family: var(--body);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 0 0 10px;
+  }
+
+  .smallButtonContainer, .largeButtonContainer {
+    width: 80%;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .smallButtonContainer {
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .largeButtonContainer {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .smallButton {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 5px var(--lightBrown);
+
+    img {
+      width: 60%;
+    }
+  }
+  
+  .largeButton {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 15px;
+    box-shadow: 0 0 5px var(--lightBrown);
+  
+    img {
+      width: 60%;
+    }
+
+    .dislike {
+      width: 50%;
+    }
+
+    .like {
+      padding-top: 5px;
+    }
   }
 }
