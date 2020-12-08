@@ -49,7 +49,6 @@ const Swipe = (props) => {
     })
     return updateFilteredUsers(filter.filter(user => user !== undefined))
   }
-<<<<<<< HEAD
   
   const swiped = (direction, id) => {
     const token = localStorage.getItem('token')
@@ -87,13 +86,6 @@ const Swipe = (props) => {
           console.log(resp.data)
         })
     } 
-=======
-
-  const swiped = (direction, nameToDelete) => {
-    console.log('removing: ' + nameToDelete, direction)
-    setLastDirection(direction)
-    alreadyRemoved.push(nameToDelete)
->>>>>>> development
   }
 
   const childRefs = useMemo(() => Array(filteredUsers.length).fill(0).map(i => React.createRef()), [])
