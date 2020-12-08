@@ -25,3 +25,4 @@ class Matches(db.Model, BaseModel):
   Liked = db.Column(MutableList.as_mutable(db.ARRAY(db.Integer)), nullable=True)
   LikedBy = db.Column(MutableList.as_mutable(db.ARRAY(db.Integer)), nullable=True)
   Matched = db.Column(MutableList.as_mutable(db.ARRAY(db.Integer)), nullable=True)
+  Disliked = db.Column(MutableList.as_mutable(db.ARRAY(db.Integer)), nullable=True)
