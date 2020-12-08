@@ -52,7 +52,7 @@ def like_user(user_id):
   return user_schema.jsonify(liked_user), 200
 
 
-@router.route('/users/<int:user_id>/dislike', method=['PUT'])
+@router.route('/users/<int:user_id>/dislike', methods=['PUT'])
 @secure_route
 def dislike_user(user_id):
   dislike_user = User.query.get(user_id)
