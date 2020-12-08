@@ -33,7 +33,7 @@ const Profile = (props) => {
 
   return <main className="maining">
     <div className="slide-container">
-      <Slide easing="ease">
+      <Slide autoplay={false} infinite={false}>
         {slideImages.map((image, ind) => {
           return <div key={ind} className="each-slide">
             <div style={{ backgroundImage: `url(${image})`, height: '60vh', backgroundSize: 'cover', backgroundPosition: 'center' }} >
