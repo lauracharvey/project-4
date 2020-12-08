@@ -2,8 +2,12 @@ import React, { useState, useEffect, useMemo } from 'react'
 import axios from 'axios'
 import TinderCard from 'react-tinder-card'
 import { getUserId } from '../lib/UserToken'
-import '../styles/otherStyles.scss'
-
+import Navbar from '../components/Navbar'
+import Header from '../components/Header'
+import Like from '../images/like.png'
+import Dislike from '../images/dislike.png'
+import Superlike from '../images/superlike.png'
+import Undo from '../images/undo.png'
 
 
 const Swipe = (props) => {
@@ -13,10 +17,8 @@ const Swipe = (props) => {
   const [filteredUsers, updateFilteredUsers] = useState([])
   const [lastDirection, setLastDirection] = useState()
 
-  
-
   useEffect(() => {
-    let resData 
+    let resData
     axios.get(`/api/users/${currUserID}`)
       .then(res => {
         resData = res.data
@@ -33,7 +35,7 @@ const Swipe = (props) => {
       })
   }, [])
 
-  const alreadyRemoved = [] 
+  const alreadyRemoved = []
 
   function filterMatched(resData, tempAllUsers) {
     if (resData.matches === undefined) return
@@ -47,6 +49,7 @@ const Swipe = (props) => {
     })
     return updateFilteredUsers(filter.filter(user => user !== undefined))
   }
+<<<<<<< HEAD
   
   const swiped = (direction, id) => {
     const token = localStorage.getItem('token')
@@ -84,6 +87,13 @@ const Swipe = (props) => {
           console.log(resp.data)
         })
     } 
+=======
+
+  const swiped = (direction, nameToDelete) => {
+    console.log('removing: ' + nameToDelete, direction)
+    setLastDirection(direction)
+    alreadyRemoved.push(nameToDelete)
+>>>>>>> development
   }
 
   const childRefs = useMemo(() => Array(filteredUsers.length).fill(0).map(i => React.createRef()), [])
@@ -92,17 +102,38 @@ const Swipe = (props) => {
   if (!currUser.matches) {
     return <h1>LOADING</h1>
   }
-  
-  return <main className="main">
+
+  return <main className="swipeMain">
+    <Header />
     <div className="cardContainer">
       {filteredUsers.map((user, index) => {
         return <TinderCard ref={childRefs[index]} className='swipe' key={user.first_name} onSwipe={(dir) => swiped(dir, user.id)} >
           <div style={{ backgroundImage: `url(${user.images[0].image1})` }} className='card'>
-            <h3 className="name-age">{user.first_name} - {user.age}</h3>
+          </div>
+          <div className="nameAge">
+            <h3 className="name-age">{user.first_name}, <strong>{user.age}</strong></h3>
           </div>
         </TinderCard>
       })}
     </div>
+
+    <div className="smallButtonContainer">
+      <div class="smallButton">
+        <img src={Undo} alt="undo" />
+      </div>
+      <div class="smallButton">
+        <img src={Superlike} alt="superlike" />
+      </div>
+    </div>
+    <div className="largeButtonContainer">
+      <div class="largeButton">
+        <img className="dislike" src={Dislike} alt="dislike" />
+      </div>
+      <div class="largeButton">
+        <img className="like" src={Like} alt="like" />
+      </div>
+    </div>
+    <Navbar />
   </main>
 }
 
