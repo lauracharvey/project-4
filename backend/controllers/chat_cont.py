@@ -3,6 +3,7 @@ from app import sio
 from flask_socketio import send, join_room, leave_room
 from models.chat_model import Chats
 from serializers.chats_schema import ChatsSchema
+from marshmallow import ValidationError
 
 chats_schema = ChatsSchema()
 

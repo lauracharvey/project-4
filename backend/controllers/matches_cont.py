@@ -29,7 +29,8 @@ def like_user(user_id):
 
     new_chat = Chats(
       user1 = g.current_user.id,
-      user2 = liked_user.id
+      user2 = liked_user.id,
+      chat_history= []
     )
 
     liked_user.chats.append(new_chat)

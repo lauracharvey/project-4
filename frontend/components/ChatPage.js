@@ -12,10 +12,29 @@ const ChatPage = (props) => {
   const [message, setMessage] = useState('')
   const [currentUser, updateCurrentUser] = useState('Lee')
 
+  useEffect(() => {
+    axios.get(`/api/chat/${props.match.params.chatID}`)
+      .then(resp => {
+        const data = resp.data
+        console.log(resp.data)
+        if (data.chat_history === null){
+          return 
+        }
+        setMessages(data.chat_history)
+      })
+  }, [])
+
   const getMessages = () => {
     socket.on('receive_message', function (data) {
       console.log(data)
       setMessages([...messages, data.message])
+      const update = {
+        chat_history: [...messages, data.message]
+      }
+      axios.put(`/api/chat/${props.match.params.chatID}`, update)
+        .then(resp => {
+          console.log(resp.data)
+        })
     })
   }
 
