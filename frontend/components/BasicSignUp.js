@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Logo from '../images/Logo.png'
 
-const Signup = (props) => {
+const BasicSignUp = (props) => {
 
   const [signupFormData, updateSignupFormData] = useState({
     first_name: '',
@@ -32,9 +32,9 @@ const Signup = (props) => {
       })
   }
 
-  return <main>
+  return <main className="regMain">
     <img src={Logo} alt="Logo"/>
-    <h1>Sign Up</h1>
+    <h1>Get Started</h1>
     <form onSubmit={handleSubmit}>
       <label>first name
         <input
@@ -107,4 +107,4 @@ const Signup = (props) => {
 
 }
 
-export default Signup
+export default BasicSignUp

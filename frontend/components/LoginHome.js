@@ -9,7 +9,7 @@ const Home = (props) => {
     email: '',
     password: ''
   })
-  
+
   function handleChange(event) {
     const data = {
       ...loginFormData,
@@ -17,10 +17,10 @@ const Home = (props) => {
     }
     updateLoginFormData(data)
   }
-  
+
   function handleSubmit(event) {
     event.preventDefault()
-  
+
     axios.post('/api/login', loginFormData)
       .then(resp => {
         localStorage.setItem('token', resp.data.token)
@@ -28,7 +28,7 @@ const Home = (props) => {
       })
   }
 
-  return <main>
+  return <main className="loginMain">
     <img className="hero" src={Logo} alt="logo" />
     <form onSubmit={handleSubmit}>
       <input
@@ -46,9 +46,9 @@ const Home = (props) => {
         placeholder="********"
       />
       <button>Login</button>
+      <p>not registered yet?</p>
+      <Link to="/signup"><button>Signup</button></Link>
     </form>
-    <p>not registered yet?</p>
-    <Link to="/signup"><button>Signup</button></Link>
   </main>
 }
 
