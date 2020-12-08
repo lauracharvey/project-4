@@ -38,7 +38,8 @@ const Swipe = (props) => {
 
   function filterMatched(resData, tempAllUsers) {
     if (resData.matches === undefined) return
-    const currLikes = resData.matches[0].Liked
+    const likeDislike = [...resData.matches[0].Liked, resData.matches[0].Disliked].flat()
+    const currLikes = likeDislike
     const filter = tempAllUsers.map(user => {
       const num = currLikes.indexOf(user.id)
       if (num !== -1) {
@@ -65,7 +66,7 @@ const Swipe = (props) => {
     <Header />
     <div className="cardContainer">
       {filteredUsers.map((user, index) => {
-        return <TinderCard ref={childRefs[index]} className='swipe' key={user.first_name} onSwipe={(dir) => swiped(dir, user.first_name)} >
+        return <TinderCard ref={childRefs[index]} className='swipe' key={user.first_name} onSwipe={(dir) => swiped(dir, user.id)} >
           <div style={{ backgroundImage: `url(${user.images[0].image1})` }} className='card'>
           </div>
           <div className="nameAge">
