@@ -1,1 +1,150 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Yellowtail&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Yellowtail&display=swap');
+
+:root {
+  --main: #e88a46;
+  --dark: #d36231;
+  --mid: #faaa56;
+  --brown: #76584b;
+  --lightBrown: #b69a8b;
+  --extraLight: #e3cec3;
+  --grey: #686868;
+  --heading: 'Yellowtail', cursive;
+  --body: 'Montserrat', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+// LOGIN PAGE
+
+.loginMain {
+  width: 100vw;
+  height: 100vh;
+  background: rgb(211,98,49);
+  background: linear-gradient(0deg, rgba(211,98,49,1) 30%, rgba(232,138,70,1) 71%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--body);
+
+  img {
+    width: 300px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    width: 300px;
+  }
+
+  a {
+    width: 100%;
+  }
+
+  input, button {
+    width: 100%;
+    height: 35px;
+    margin: 10px 0 10px 0;
+    border-radius: 4px;
+    font-family: var(--body);
+  }
+
+  input {
+    border: none;
+    background: var(--extraLight);
+    font-size: 16px;
+  }
+
+  button {
+    background: var(--extraLight);
+    color: var(--grey);
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-weight: 500;
+    border: none;
+  }
+}
+
+// REGISTRATION PAGE
+
+.regMain {
+  width: 100vw;
+  min-height: 100vh;
+  background: rgb(211,98,49);
+  background: linear-gradient(0deg, rgba(211,98,49,1) 30%, rgba(232,138,70,1) 71%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--body);
+
+  h1 {
+    text-transform: uppercase;
+    font-size: 20px;
+  }
+
+  img {
+    width: 300px;
+    margin: 30px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    width: 300px;
+    text-align: left;
+  }
+
+  a {
+    width: 100%;
+  }
+
+  label {
+    width: 100%;
+    font-weight: 300;
+  }
+
+  input, button, textarea {
+    width: 100%;
+    height: 35px;
+    margin: 10px 0 10px 0;
+    border-radius: 4px;
+    font-family: var(--body);
+  }
+
+  input, textarea {
+    border: none;
+    background: var(--extraLight);
+    font-size: 16px;
+  }
+
+  textarea {
+    height: 100px;
+  }
+
+  button {
+    background: var(--extraLight);
+    color: var(--grey);
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-weight: 500;
+    border: none;
+  }
+}
