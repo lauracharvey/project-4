@@ -10,6 +10,7 @@ import UpdateProfile from './components/UpdateUserProfile'
 import Matches from './components/Matches'
 import ChatPage from './components/ChatPage'
 import Swipe from './components/SwipeView'
+import Profile from './components/UserProfile'
 
 const App = () => (
   <BrowserRouter>
@@ -21,6 +22,7 @@ const App = () => (
       <Route exact path="/matches" component={Matches} />
       <Route exact path="/swipe" component={Swipe} />
       <Route exact path="/matches/chat/:chatID" component={ChatPage} />
+      <Route exact path="/profile/:userID" component={Profile} />
 
     </Switch>
   </BrowserRouter>
