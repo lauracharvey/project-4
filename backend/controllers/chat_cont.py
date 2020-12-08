@@ -19,11 +19,30 @@ def handle_join_room(data):
   join_room(data['room'])
   sio.emit(data, room=data['room'])
 
-
-@router.route('/chat/<int:chat_id>', methods=['PUT'])
-def update_chat(chat_id):
+@router.route('/chat/<int:chat_id>', methods=['GET'])
+def get_chat(chat_id):
   chat_record = Chats.query.get(chat_id)
 
   print(chat_record.chat_history)
 
   return chats_schema.jsonify(chat_record)
+
+@router.route('/chat/<int:chat_id>', methods=['PUT'])
+def update_chat(chat_id):
+  exsisting_chat = Chats.query.get(chat_id)
+
+  try:
+    chat = chats_schema.load(
+      request.get_json(),
+      instance=exsisting_chat,
+      partial=True
+    )
+  
+  except ValidationError as e:
+    return {'errors': e.messages, 'message': 'Something went wrong'}
+  
+  chat.save()
+
+  return chats_schema.jsonify(chat)
+
+  
