@@ -9,6 +9,7 @@ import UpdateProfile from './components/UpdateUserProfile'
 
 import Matches from './components/Matches'
 import ChatPage from './components/ChatPage'
+import Swipe from './components/SwipeView'
 
 const App = () => (
   <BrowserRouter>
@@ -18,7 +19,9 @@ const App = () => (
       <Route exact path="/settings" component={Settings} />
       <Route exact path="/updateprofile/:userID" component={UpdateProfile} />
       <Route exact path="/matches" component={Matches} />
+      <Route exact path="/swipe" component={Swipe} />
       <Route exact path="/matches/chat/:chatID" component={ChatPage} />
+
     </Switch>
   </BrowserRouter>
 )
