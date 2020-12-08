@@ -8,7 +8,7 @@ const socket = io.connect(`${endPoint}`)
 
 const ChatPage = (props) => {
 
-  const [messages, setMessages] = useState(['Hello and Welcome'])
+  const [messages, setMessages] = useState([])
   const [message, setMessage] = useState('')
   const [currentUser, updateCurrentUser] = useState('Lee')
 
@@ -17,7 +17,7 @@ const ChatPage = (props) => {
       .then(resp => {
         const data = resp.data
         console.log(resp.data)
-        if (data.chat_history === null){
+        if (!data.chat_history){
           return 
         }
         setMessages(data.chat_history)
@@ -25,6 +25,7 @@ const ChatPage = (props) => {
   }, [])
 
   const getMessages = () => {
+
     socket.on('receive_message', function (data) {
       console.log(data)
       setMessages([...messages, data.message])

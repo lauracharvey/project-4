@@ -5,6 +5,7 @@ import { getUserId } from '../lib/UserToken'
 import '../styles/otherStyles.scss'
 
 
+
 const Swipe = (props) => {
   const currUserID = getUserId()
   const [currUser, updateCurrUser] = useState({})
@@ -36,7 +37,7 @@ const Swipe = (props) => {
 
   function filterMatched(resData, tempAllUsers) {
     if (resData.matches === undefined) return
-    const likeDislike = [...resData.matches[0].Liked, resData.matches[0].Disliked].flat()
+    const likeDislike = [...resData.matches[0].Liked, resData.matches[0].Disliked, resData.matches[0].Matched].flat()
     const currLikes = likeDislike
     const filter = tempAllUsers.map(user => {
       const num = currLikes.indexOf(user.id)
@@ -49,6 +50,7 @@ const Swipe = (props) => {
   
   const swiped = (direction, id) => {
     const token = localStorage.getItem('token')
+
     if (direction === 'right'){
       setLastDirection(direction)
       alreadyRemoved.push(id)
@@ -59,6 +61,7 @@ const Swipe = (props) => {
         .then(resp => {
           console.log(resp.data)
         })
+
     } else if (direction === 'left'){
       setLastDirection(direction)
       alreadyRemoved.push(id)
@@ -69,6 +72,7 @@ const Swipe = (props) => {
           console.log(resp.data)
         })
       console.log('left', id)
+
     } else if (direction === 'up'){
       setLastDirection(direction)
       alreadyRemoved.push(id)
