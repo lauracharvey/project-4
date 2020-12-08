@@ -1,5 +1,7 @@
 import React, { useState, UseEffect, useEffect } from 'react'
 import axios from 'axios'
+import Header from '../components/Header'
+import Footer from '../components/Navbar'
 
 const Matches = (props) => {
 
@@ -36,7 +38,7 @@ const Matches = (props) => {
 
   console.log(filterMatched())
   return <div>
-    <h1>Matches</h1>
+    <Header/>
     {filterMatched().map((user, index) => {
       const userChats = user.chats.filter((chat) => {
         return chat.user1 === 3 || chat.user2 === 3
@@ -52,6 +54,7 @@ const Matches = (props) => {
         }}>Chat now!</button>
       </div>
     })}
+    <Footer/>
   </div>
 
 
