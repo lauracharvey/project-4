@@ -30,7 +30,7 @@ def like_user(user_id):
     new_chat = Chats(
       user1 = g.current_user.id,
       user2 = liked_user.id,
-      chat_history= []
+      chat_history= ['The start of your chat']
     )
 
     liked_user.chats.append(new_chat)
@@ -40,7 +40,7 @@ def like_user(user_id):
     liked_user.save()
     g.current_user.save()
 
-    return user_schema.jsonify(liked_user), 200
+    return {'message': 'match!'}, 200
   
   existing_matches.LikedBy.append(g.current_user.id)
   existing_curr_matches.Liked.append(user_id)

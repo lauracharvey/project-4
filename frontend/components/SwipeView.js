@@ -9,6 +9,7 @@ import Dislike from '../images/dislike.png'
 import Superlike from '../images/superlike.png'
 import Undo from '../images/undo.png'
 
+
 const Swipe = (props) => {
   const currUserID = getUserId()
   const [currUser, updateCurrUser] = useState({})
@@ -38,7 +39,7 @@ const Swipe = (props) => {
 
   function filterMatched(resData, tempAllUsers) {
     if (resData.matches === undefined) return
-    const likeDislike = [...resData.matches[0].Liked, resData.matches[0].Disliked].flat()
+    const likeDislike = [...resData.matches[0].Liked, resData.matches[0].Disliked, resData.matches[0].Matched].flat()
     const currLikes = likeDislike
     const filter = tempAllUsers.map(user => {
       const num = currLikes.indexOf(user.id)
@@ -48,11 +49,43 @@ const Swipe = (props) => {
     })
     return updateFilteredUsers(filter.filter(user => user !== undefined))
   }
+  
+  const swiped = (direction, id) => {
+    const token = localStorage.getItem('token')
 
-  const swiped = (direction, nameToDelete) => {
-    console.log('removing: ' + nameToDelete, direction)
-    setLastDirection(direction)
-    alreadyRemoved.push(nameToDelete)
+    if (direction === 'right'){
+      setLastDirection(direction)
+      alreadyRemoved.push(id)
+      console.log('Right')
+      axios.put(`/api/users/${id}/like`,'', {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+        .then(resp => {
+          console.log(resp.data)
+        })
+
+    } else if (direction === 'left'){
+      setLastDirection(direction)
+      alreadyRemoved.push(id)
+      axios.put(`/api/users/${id}/dislike`,'', {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+        .then(resp => {
+          console.log(resp.data)
+        })
+      console.log('left', id)
+
+    } else if (direction === 'up'){
+      setLastDirection(direction)
+      alreadyRemoved.push(id)
+      console.log('up')
+      axios.put(`/api/users/${id}/like`,'', {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+        .then(resp => {
+          console.log(resp.data)
+        })
+    } 
   }
 
   const childRefs = useMemo(() => Array(filteredUsers.length).fill(0).map(i => React.createRef()), [])

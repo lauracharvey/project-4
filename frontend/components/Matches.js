@@ -1,4 +1,5 @@
 import React, { useState, UseEffect, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Header from '../components/Header'
 import Footer from '../components/Navbar'
@@ -49,9 +50,9 @@ const Matches = (props) => {
         <h2>{user.first_name}</h2>
         <p>{user.bio}</p>
         <p>User Chat ID = {userChats[0].id}</p>
-        <button onClick={() => {
-          props.history.push(`/matches/chat/${userChats[0].id}`)
-        }}>Chat now!</button>
+        <Link to={`/matches/chat/${userChats[0].id}`}>
+          <button>Chat now!</button>
+        </Link>
       </div>
     })}
     <Footer/>
