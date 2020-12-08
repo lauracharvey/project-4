@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
+import SmallLogo from '../images/SpoonsOnlyLogo.png'
 
 const Navbar = () => {
 
@@ -8,13 +9,12 @@ const Navbar = () => {
       <Link>
       <img src='https://www.flaticon.com/svg/static/icons/svg/25/25379.svg' alt='link to messages'/>
       </Link>
-      <Link>
-      <img src='https://www.flaticon.com/svg/static/icons/svg/25/25379.svg' alt='speech bubble'/>
+      <Link to={'/swipe'}>
+      <img className="smallLogo" src={SmallLogo} alt='speech bubble'/>
       </Link>
       <Link>
       <img src='https://www.flaticon.com/svg/static/icons/svg/2522/2522086.svg' alt='link to own profile'/>
       </Link>
-    
     </nav>
   </footer>
 
