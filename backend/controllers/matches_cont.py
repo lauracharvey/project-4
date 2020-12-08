@@ -51,6 +51,20 @@ def like_user(user_id):
 
   return user_schema.jsonify(liked_user), 200
 
+
+@router.route('/users/<int:user_id>/dislike', method=['PUT'])
+@secure_route
+def dislike_user(user_id):
+  dislike_user = User.query.get(user_id)
+  existing_matches = Matches.query.get(user_id)
+  existing_curr_matches = Matches.query.get(g.current_user.id)
+
+  existing_curr_matches.Disliked.append(user_id)
+
+  existing_curr_matches.save()
+
+  return user_schema.jsonify(g.current_user)
+
 @router.route('/users/matches', methods=['GET'])
 @secure_route
 def get_matches():
