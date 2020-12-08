@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import Carousel from '@brainhubeu/react-carousel'
-import '@brainhubeu/react-carousel/lib/style.css'
+import { Slide } from 'react-slideshow-image'
+import 'react-slideshow-image/dist/styles.css'
 
 
 const Profile = (props) => {
@@ -14,11 +14,14 @@ const Profile = (props) => {
       .then(res => {
         const resData = res.data
         updateUser(resData)
+        console.log(resData)
+
+        let images = []
         Object.keys(resData.images[0]).map((key) => {
           if (key.includes('image') && resData.images[0][key] !== null) {
-            const images = [...slideImages, resData.images[0][key]]
-
-            updateSlideImages(images)
+            images.push(resData.images[0][key])
+            const newImages = [...images]
+            updateSlideImages(newImages)
           }
         })
       })
@@ -28,8 +31,49 @@ const Profile = (props) => {
     return <h1>LOADING</h1>
   }
 
-  return <main>
+  return <main className="maining">
+    <div className="slide-container">
+      <Slide easing="ease">
+        {slideImages.map((image, ind) => {
+          return <div key={ind} className="each-slide">
+            <div style={{ backgroundImage: `url(${image})`, height: '60vh', backgroundSize: 'cover', backgroundPosition: 'center' }} >
+            </div>
+          </div>
+        })}
+      </Slide>
+    </div>
+    <label>Name:
+      <p>{user.first_name}</p>
+    </label>
+    <label>Age:
+      <p>{user.age}</p>
+    </label>
+    <label>Bio:
+      <p>{user.bio}</p>
+    </label>
+    <label>Location:
+      <p>{user.location}</p>
+    </label>
+    {user.interests[0] && <label>Interests:
+      {user.interests.map((int, ind) => {
+        return <p key={ind}>{int.name}</p>
+      })}
+    </label>}
+    {user.socials[0].Instagram && <label>Instagram:
+      <a>{user.socials[0].Instagram}</a>      
+    </label>}
 
+    {user.socials[0].Facebook && <label>Facebook:
+      <a>{user.socials[0].Facebook}</a>      
+    </label>}
+
+    {user.socials[0].Spotify && <label>Spotify:
+      <a>{user.socials[0].Spotify}</a>      
+    </label>}
+
+    {user.socials[0].LinkedIn && <label>LinkedIn:
+      <a>{user.socials[0].LinkedIn}</a>      
+    </label>}
   </main>
 }
 
