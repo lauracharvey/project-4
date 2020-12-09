@@ -7,7 +7,7 @@ import Header from '../components/Header'
 import Like from '../images/like.png'
 import Dislike from '../images/dislike.png'
 import Superlike from '../images/superlike.png'
-import Undo from '../images/undo.png'
+import UserProfile from '../images/multiple-users-silhouette.png'
 
 
 const Swipe = (props) => {
@@ -116,7 +116,7 @@ const Swipe = (props) => {
 
     <div className="smallButtonContainer">
       <div className="smallButton">
-        <img src={Undo} alt="undo" onClick={goToProfile}/>
+        <img src={UserProfile} alt="userprofile" onClick={goToProfile}/>
       </div>
       <div className="smallButton">
         <img src={Superlike} alt="superlike" />
