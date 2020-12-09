@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { getUserId } from '../lib/UserToken'
 import Footer from './Navbar'
@@ -7,14 +8,21 @@ import Back from '../images/previous.png'
 
 const Settings = (props) => {
   const userID = getUserId()
+  const [currUser, updateCurrUser] = useState({})
 
   function handleLogout() {
     localStorage.removeItem('token')
     props.history.push('/')
   }
 
-  function handleSelect(e) {
-    console.log(e.target.id)
+  function handleGenderPref(event) {
+    const value = event.target.value
+    const data = {
+      ...currUser,
+      gender_preference: value
+    }
+    updateCurrUser(data)
+    console.log(data)
   }
 
   return <main className="settingsMain">
@@ -32,11 +40,12 @@ const Settings = (props) => {
     </header>
 
     <form>
-      <label>Looking for:
-        <select name="gender" onChange={handleSelect}>
-          <option>Male</option>
-          <option>Female</option>
-          <option>Both</option>
+      <label>Looking for
+        <select name="gender_preference" onChange={handleGenderPref}>
+          <option disabled selected>Please Select</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Both">Both</option>
         </select>
       </label>
     </form>
