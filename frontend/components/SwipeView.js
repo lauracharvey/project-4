@@ -16,6 +16,7 @@ const Swipe = (props) => {
   const [allUsers, updateAllUsers] = useState([])
   const [filteredUsers, updateFilteredUsers] = useState([])
   const [lastDirection, setLastDirection] = useState()
+  let swipeUserID
 
   useEffect(() => {
     let resData
@@ -88,8 +89,11 @@ const Swipe = (props) => {
     } 
   }
 
-  const childRefs = useMemo(() => Array(filteredUsers.length).fill(0).map(i => React.createRef()), [])
+  function goToProfile() {
+    return props.history.push(`/profile/${swipeUserID}`)
+  }
 
+  const childRefs = useMemo(() => Array(filteredUsers.length).fill(0).map(i => React.createRef()), [])
 
   if (!currUser.matches) {
     return <h1>LOADING</h1>
@@ -99,7 +103,8 @@ const Swipe = (props) => {
     <Header />
     <div className="cardContainer">
       {filteredUsers.map((user, index) => {
-        return <TinderCard ref={childRefs[index]} className='swipe' key={user.first_name} onSwipe={(dir) => swiped(dir, user.id)} >
+        swipeUserID = user.id
+        return <TinderCard ref={childRefs[index]} className='swipe' key={user.first_name} onSwipe={(dir) => swiped(dir, user.id)}>
           <div style={{ backgroundImage: `url(${user.images[0].image1})` }} className='card'>
           </div>
           <div className="nameAge">
@@ -110,18 +115,18 @@ const Swipe = (props) => {
     </div>
 
     <div className="smallButtonContainer">
-      <div class="smallButton">
-        <img src={Undo} alt="undo" />
+      <div className="smallButton">
+        <img src={Undo} alt="undo" onClick={goToProfile}/>
       </div>
-      <div class="smallButton">
+      <div className="smallButton">
         <img src={Superlike} alt="superlike" />
       </div>
     </div>
     <div className="largeButtonContainer">
-      <div class="largeButton">
+      <div className="largeButton">
         <img className="dislike" src={Dislike} alt="dislike" />
       </div>
-      <div class="largeButton">
+      <div className="largeButton">
         <img className="like" src={Like} alt="like" />
       </div>
     </div>
