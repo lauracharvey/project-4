@@ -10,6 +10,13 @@ const Settings = (props) => {
   const userID = getUserId()
   const [currUser, updateCurrUser] = useState({})
 
+  useEffect(() => {
+    axios.get(`/api/users/${userID}`)
+      .then(res => {
+        updateCurrUser(res.data)
+      })
+  }, [])
+
   function handleLogout() {
     localStorage.removeItem('token')
     props.history.push('/')
