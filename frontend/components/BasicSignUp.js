@@ -25,7 +25,7 @@ const BasicSignUp = (props) => {
     updateSignupFormData(data)
   }
 
-  function handleSelect(event) {
+  function handleGender(event) {
     const value = event.target.id
     const data = {
       ...signupFormData,
@@ -111,29 +111,11 @@ const BasicSignUp = (props) => {
       </label>
 
       <label>Gender
-        <input 
-          type="radio"
-          id="male"
-          name="gender"
-          onFocus={handleSelect}
-        />
-        <label htmlFor="male">Male</label>
-
-        <input 
-          type="radio"
-          id="female"
-          name="gender"
-          onFocus={handleSelect}
-        />
-        <label htmlFor="female">Female</label>
-
-        <input 
-          type="radio"
-          id="other"
-          name="gender"
-          onFocus={handleSelect}
-        />
-        <label htmlFor="female">Other</label>
+        <select name="gender" onChange={handleGender}>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
       </label>
 
       <button>Submit</button>
