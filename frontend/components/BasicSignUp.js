@@ -27,21 +27,23 @@ const BasicSignUp = (props) => {
   }
 
   function handleGender(event) {
-    const value = event.target.id
+    const value = event.target.value
     const data = {
       ...signupFormData,
       gender: value
     }
     updateSignupFormData(data)
+    console.log(data)
   }
 
   function handleGenderPref(event) {
-    const value = event.target.id
+    const value = event.target.value
     const data = {
       ...signupFormData,
       gender_preference: value
     }
     updateSignupFormData(data)
+    console.log(data)
   }
 
   function handleSubmit(event) {
@@ -122,9 +124,19 @@ const BasicSignUp = (props) => {
 
       <label>Gender
         <select name="gender" onChange={handleGender}>
-          <option>Male</option>
-          <option>Female</option>
-          <option>Other</option>
+          <option disabled selected>Please Select</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </label>
+
+      <label>Looking for
+        <select name="gender_preference" onChange={handleGenderPref}>
+          <option disabled selected>Please Select</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Both">Both</option>
         </select>
       </label>
 
