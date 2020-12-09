@@ -133,7 +133,7 @@ const BasicSignUp = (props) => {
           name="gender"
           onFocus={handleSelect}
         />
-        <label htmlFor="female">Other</label>
+        <label htmlFor="other">Other</label>
       </label>
 
       <button>Submit</button>
