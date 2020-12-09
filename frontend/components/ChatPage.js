@@ -1,33 +1,56 @@
 import React, { useState, UseEffect, useEffect } from 'react'
 import axios from 'axios'
+import { getUserId } from '../lib/UserToken'
 import io from 'socket.io-client'
 
 const endPoint = 'http://localhost:5000'
 
-const socket = io.connect(`${endPoint}`)
+let socket = ''
 
 const ChatPage = (props) => {
-
+  const currUserID = getUserId()
   const [messages, setMessages] = useState([])
   const [message, setMessage] = useState('')
-  const [currentUser, updateCurrentUser] = useState('Lee')
+  const [currentUser, updateCurrentUser] = useState('')
+  const [connected, updateConnect] = useState(false)
 
   useEffect(() => {
+    socket = io.connect(`${endPoint}`)
+
+    socket.on('connect', () => {
+      socket.emit('join_room', {
+        username: `${currentUser.first_name}`,
+        room: `${props.match.params.chatID}`
+      })
+      console.log('connected!')
+      updateConnect(true)
+    })
+  
+
+    console.log('check check')
+    axios.get(`/api/users/${currUserID}`)
+      .then(res => {
+        const resData = res.data
+        updateCurrentUser(resData)
+      })
+
+
     axios.get(`/api/chat/${props.match.params.chatID}`)
       .then(resp => {
         const data = resp.data
         console.log(resp.data)
-        if (!data.chat_history){
-          return 
+        if (!data.chat_history) {
+          return
         }
         setMessages(data.chat_history)
       })
   }, [])
 
+
+
   const getMessages = () => {
 
     socket.on('receive_message', function (data) {
-      console.log(data)
       setMessages([...messages, data.message])
       const update = {
         chat_history: [...messages, data.message]
@@ -40,13 +63,7 @@ const ChatPage = (props) => {
   }
 
 
-  socket.on('connect', () => {
-    socket.emit('join_room', {
-      username: `${currentUser}`,
-      room: `${props.match.params.chatID}`
-    })
-    console.log('hi')
-  })
+
 
 
   useEffect(() => {
@@ -62,7 +79,7 @@ const ChatPage = (props) => {
       socket.emit('send_message', {
         username: `${currentUser}`,
         room: `${props.match.params.chatID}`,
-        message: message
+        message: `${currentUser.first_name}: ${message}`
       })
       setMessage('')
     } else {
