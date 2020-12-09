@@ -94,22 +94,12 @@ const Swipe = (props) => {
     return props.history.push(`/profile/${swipeUserID}`)
   }
 
-  const childRefs = useMemo(() => Array(allUsers.length).fill(0).map(i => React.createRef()), [])
-
-  const buttonSwipe = (dir) => {
-    const cardsLeft = filteredUsers.filter(person => !alreadyRemoved.includes(person.name))
-
-    if (cardsLeft.length) {
-      const toBeRemoved = cardsLeft[cardsLeft.length - 1].name // Find the card object to be removed
-      const index = allUsers.map(person => person.name).indexOf(toBeRemoved) // Find the index of which to make the reference to
-      alreadyRemoved.push(toBeRemoved) // Make sure the next card gets removed next time if this card do not have time to exit the screen
-      childRefs[index].current.swipe(dir) // Swipe the card!
-    }
-  }
-
+  const childRefs = useMemo(() => Array(filteredUsers.length).fill(0).map(i => React.createRef()), [])
+  console.log(childRefs)
   if (!currUser.matches) {
     return <h1>LOADING</h1>
   }
+
 
   return <main className="swipeMain">
     <Header />
@@ -132,14 +122,6 @@ const Swipe = (props) => {
       </div>
       <div className="smallButton">
         <img src={Superlike} alt="superlike" />
-      </div>
-    </div>
-    <div className="largeButtonContainer">
-      <div className="largeButton" onClick={() => buttonSwipe('left')} >
-        <img className="dislike" src={Dislike} alt="dislike" />
-      </div>
-      <div className="largeButton" onClick={() => buttonSwipe('right')} >
-        <img className="like" src={Like} alt="like" />
       </div>
     </div>
     <Navbar />
