@@ -26,6 +26,7 @@ class User(db.Model, BaseModel):
   location = db.Column(db.String(30), nullable=False)
   age = db.Column(db.Integer, nullable=False)
   gender = db.Column(db.String(10), nullable=False)
+  gender_preference = db.Column(db.String(10), nullable=False)
   interests = db.relationship('Interests', secondary=user_interests_join, backref='users')
   socials = db.relationship('Socials', secondary=user_socials_join, backref='users')
   images = db.relationship('Images', secondary=user_images_join, backref='users')
