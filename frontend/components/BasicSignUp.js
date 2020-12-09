@@ -11,7 +11,8 @@ const BasicSignUp = (props) => {
     password_confirmation: '',
     bio: '',
     location: '',
-    age: ''
+    age: '',
+    gender: ''
   })
 
   function handleChange(event) {
@@ -20,6 +21,15 @@ const BasicSignUp = (props) => {
     const data = {
       ...signupFormData,
       [name]: value
+    }
+    updateSignupFormData(data)
+  }
+
+  function handleSelect(event) {
+    const value = event.target.id
+    const data = {
+      ...signupFormData,
+      gender: value
     }
     updateSignupFormData(data)
   }
@@ -36,7 +46,7 @@ const BasicSignUp = (props) => {
     <img src={Logo} alt="Logo"/>
     <h1>Get Started</h1>
     <form onSubmit={handleSubmit}>
-      <label>first name
+      <label>First Name
         <input
           type="text"
           onChange={handleChange}
@@ -45,16 +55,16 @@ const BasicSignUp = (props) => {
         />
       </label>
 
-      <label>email
+      <label>Email
         <input
-          type="text"
+          type="email"
           onChange={handleChange}
           value={signupFormData.email}
           name="email"
         />
       </label>
 
-      <label>password
+      <label>Password
         <input
           type="password"
           onChange={handleChange}
@@ -63,7 +73,7 @@ const BasicSignUp = (props) => {
         />
       </label>
 
-      <label>confirm password
+      <label>Confirm Password
         <input
           type="password"
           onChange={handleChange}
@@ -72,7 +82,7 @@ const BasicSignUp = (props) => {
         />
       </label>
 
-      <label>age
+      <label>Age
         <input
           type="number"
           min="18"
@@ -83,7 +93,7 @@ const BasicSignUp = (props) => {
         />
       </label>
 
-      <label>first half of your postcode
+      <label>First half of your postcode
         <input
           type="text"
           onChange={handleChange}
@@ -92,12 +102,38 @@ const BasicSignUp = (props) => {
         />
       </label>
 
-      <label>bio
+      <label>Bio
         <textarea
           onChange={handleChange}
           value={signupFormData.bio}
           name="bio"
         />
+      </label>
+
+      <label>Gender
+        <input 
+          type="radio"
+          id="male"
+          name="gender"
+          onFocus={handleSelect}
+        />
+        <label htmlFor="male">Male</label>
+
+        <input 
+          type="radio"
+          id="female"
+          name="gender"
+          onFocus={handleSelect}
+        />
+        <label htmlFor="female">Female</label>
+
+        <input 
+          type="radio"
+          id="other"
+          name="gender"
+          onFocus={handleSelect}
+        />
+        <label htmlFor="female">Other</label>
       </label>
 
       <button>Submit</button>

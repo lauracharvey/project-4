@@ -51,6 +51,8 @@ const Profile = (props) => {
     <div className="userInfo">
       <h2>{user.first_name}, {user.age}</h2>
       <hr></hr>
+      <p>Gender: {user.gender}</p>
+      <hr></hr>
       <p className="bio">{user.bio}</p>
       <hr></hr>
       <p>Location: {user.location}</p>
