@@ -47,7 +47,7 @@ const Matches = (props) => {
       })
   }
 
-  console.log(filterMatched())
+
   return <main className="matchesMain">
     <Header />
     <div className="matchesContainer">

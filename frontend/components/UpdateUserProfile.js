@@ -45,13 +45,11 @@ const UpdateProfile = (props) => {
     axios.get(`/api/users/${userID}/images`)
       .then(res => {
         updateCurrUserImages(res.data)
-        // console.log(res.data)
       })
 
     axios.get(`/api/users/${userID}/socials`)
       .then(res => {
         updateCurrUserSocials(res.data)
-        // console.log(res.data)
       })
 
     axios.get(`/api/interests/${userID}`)
@@ -68,11 +66,9 @@ const UpdateProfile = (props) => {
       socials: [currUserSocials]
     }
 
-    // console.log(data)
 
     axios.put(`/api/users/${userID}/update`, data)
       .then(res => {
-        console.log(res.data)
         props.history.push('/swipe')
       })
   }
@@ -124,7 +120,6 @@ const UpdateProfile = (props) => {
       [name]: value
     }
     updateCurrUserSocials(data)
-    // console.log(currUserSocials)
   }
 
   function handleAddInterests(e) {

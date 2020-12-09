@@ -22,7 +22,6 @@ const Swipe = (props) => {
       .then(res => {
         resData = res.data
         updateCurrUser(resData)
-        console.log(resData)
       })
 
     axios.get('/api/users')
@@ -58,12 +57,11 @@ const Swipe = (props) => {
     if (direction === 'right') {
       setLastDirection(direction)
       alreadyRemoved.push(id)
-      console.log('Right')
       axios.put(`/api/users/${id}/like`, '', {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then(resp => {
-          console.log(resp.data)
+          return
         })
 
     } else if (direction === 'left') {
@@ -73,19 +71,17 @@ const Swipe = (props) => {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then(resp => {
-          console.log(resp.data)
+          return
         })
-      console.log('left', id)
 
     } else if (direction === 'up') {
       setLastDirection(direction)
       alreadyRemoved.push(id)
-      console.log('up')
       axios.put(`/api/users/${id}/like`, '', {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then(resp => {
-          console.log(resp.data)
+          return
         })
     }
   }
@@ -95,7 +91,6 @@ const Swipe = (props) => {
   }
 
   const childRefs = useMemo(() => Array(filteredUsers.length).fill(0).map(i => React.createRef()), [])
-  console.log(childRefs)
   if (!currUser.matches) {
     return <h1>LOADING</h1>
   }

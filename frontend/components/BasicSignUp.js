@@ -33,7 +33,6 @@ const BasicSignUp = (props) => {
       gender: value
     }
     updateSignupFormData(data)
-    console.log(data)
   }
 
   function handleGenderPref(event) {
@@ -43,7 +42,6 @@ const BasicSignUp = (props) => {
       gender_preference: value
     }
     updateSignupFormData(data)
-    console.log(data)
   }
 
   function handleSubmit(event) {
