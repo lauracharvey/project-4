@@ -48,6 +48,9 @@ const Profile = (props) => {
     <label>Age:
       <p>{user.age}</p>
     </label>
+    <label>Gender:
+      <p>{user.gender}</p>
+    </label>
     <label>Bio:
       <p>{user.bio}</p>
     </label>

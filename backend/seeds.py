@@ -45,9 +45,11 @@ with app.app_context():
   laura_images = Images(
     image1='https://res.cloudinary.com/spoondr/image/upload/v1607339132/husky_puppy_vbsiyi.jpg'
   )
-
   lee_images = Images(
     image1='https://res.cloudinary.com/spoondr/image/upload/v1607339132/husky_puppy_vbsiyi.jpg'
+  )
+  default_image = Images(
+    image1='https://res.cloudinary.com/spoondr/image/upload/v1607006914/Portrait_Placeholder_zu9uoa.png'
   )
   print('📸 📸 📸')
 
@@ -58,6 +60,7 @@ with app.app_context():
     bio='Hi, please can someone spoon me?',
     location='CT1',
     age='22',
+    gender='Male',
     interests=[spooning],
     socials=[harry_socials],
     images=[harry_images],
@@ -82,6 +85,7 @@ with app.app_context():
     bio='Spoon dogs not humans',
     location='ME14',
     age='21',
+    gender='Female',
     socials=[laura_socials],
     images=[laura_images],
     chats=[]
@@ -105,6 +109,7 @@ with app.app_context():
     bio='PUT THE PHONE BACK',
     location='PE19',
     age='23',
+    gender='Male',
     socials=[lee_socials],
     images=[lee_images],
     chats=[]
@@ -128,9 +133,10 @@ with app.app_context():
     bio='Spoony Woony',
     location='CT1',
     age='21',
+    gender='Female',
     interests=[spooning],
     socials=[harry_socials],
-    images=[harry_images],
+    images=[default_image],
     chats=[]
   )
   alexia.save()
@@ -152,9 +158,10 @@ with app.app_context():
     bio='Woof',
     location='CT1',
     age='3',
+    gender='Female',
     interests=[spooning],
     socials=[harry_socials],
-    images=[harry_images],
+    images=[default_image],
     chats=[]
   )
   gigi.save()
@@ -176,9 +183,10 @@ with app.app_context():
     bio='Hi',
     location='CT1',
     age='26',
+    gender='Male',
     interests=[spooning],
     socials=[harry_socials],
-    images=[harry_images],
+    images=[default_image],
     chats=[]
   )
   joe.save()
@@ -200,9 +208,10 @@ with app.app_context():
     bio='No one touch me',
     location='CT1',
     age='49',
+    gender='Male',
     interests=[spooning],
     socials=[harry_socials],
-    images=[harry_images],
+    images=[default_image],
     chats=[]
   )
   jon.save()
@@ -224,9 +233,10 @@ with app.app_context():
     bio='Yaaaaas',
     location='CT1',
     age='25',
+    gender='Female',
     interests=[spooning],
     socials=[harry_socials],
-    images=[harry_images],
+    images=[default_image],
     chats=[]
   )
   megan.save()
@@ -248,9 +258,10 @@ with app.app_context():
     bio='Up for any kind of spoon',
     location='CT1',
     age='20',
+    gender='Female',
     interests=[spooning],
     socials=[harry_socials],
-    images=[harry_images],
+    images=[default_image],
     chats=[]
   )
   ellie.save()
