@@ -8,7 +8,7 @@ const Navbar = () => {
 
   return <footer>
     <nav>
-      <Link>
+      <Link to={'/matches'}>
         <img src='https://www.flaticon.com/svg/static/icons/svg/25/25379.svg' alt='link to messages'/>
       </Link>
       <Link to={'/swipe'}>

@@ -7,8 +7,6 @@ import Header from '../components/Header'
 import Like from '../images/like.png'
 import Dislike from '../images/dislike.png'
 import Superlike from '../images/superlike.png'
-import Undo from '../images/undo.png'
-
 
 const Swipe = (props) => {
   const currUserID = getUserId()
@@ -111,7 +109,6 @@ const Swipe = (props) => {
 
     <div className="smallButtonContainer">
       <div class="smallButton">
-        <img src={Undo} alt="undo" />
       </div>
       <div class="smallButton">
         <img src={Superlike} alt="superlike" />
