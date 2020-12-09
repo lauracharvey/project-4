@@ -40,7 +40,7 @@ def like_user(user_id):
     liked_user.save()
     g.current_user.save()
 
-    return {'message': 'match!', 'id': f'{liked_user.id}'}, 200
+    return {'message': 'match!'}, 200
   
   existing_matches.LikedBy.append(g.current_user.id)
   existing_curr_matches.Liked.append(user_id)
