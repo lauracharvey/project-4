@@ -223,7 +223,7 @@ header {
 
   .card {
     position: relative;
-    width: 80vw;
+    width: 300px;
     max-width: 100%;
     height: 300px;
     background-size: cover;
@@ -430,6 +430,83 @@ header {
       width: 25px;
     }
   }
+}
+
+// UPDATE USER PROFILE
+
+.updateUserProfileMain {
+  width: 100vw;
+  height: 3000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--extraLight);
+  font-family: var(--body);
+
+  .profileInner {
+    width: 90vw;
+    height: 70vh;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    width: 300px;
+  }
+
+  a {
+    width: 100%;
+  }
+
+  input, button, textarea {
+    width: 100%;
+    height: 40px;
+    margin: 10px 0 10px 0;
+    border-radius: 4px;
+    font-family: var(--body);
+    font-size: 15px;
+    padding-left: 10px;
+    box-shadow: 0 0 3px var(--lightBrown);
+  }
+
+  textarea {
+    height: 100px;
+  }
+
+  label {
+    width: 100%;
+    text-align: left;
+  }
+
+  button {
+    background: var(--extraLight);
+    color: var(--grey);
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-weight: 500;
+    border: none;
+  }
+
+  .interestsOuter {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .interest {
+    background: var(--mid);
+    padding: 10px;
+    border-radius: 4px;
+    margin: 2px;
+  }
+
+
 }
 
 

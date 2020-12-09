@@ -14,7 +14,7 @@ const Navbar = () => {
       <Link to={'/swipe'}>
         <img className="smallLogo" src={SmallLogo} alt='speech bubble'/>
       </Link>
-      <Link to={`/profile/${currUser}`}>
+      <Link to={`/updateprofile/${currUser}`}>
         <img src='https://www.flaticon.com/svg/static/icons/svg/2522/2522086.svg' alt='link to own profile'/>
       </Link>
     </nav>
