@@ -265,9 +265,4 @@ with app.app_context():
   ellie.matches.append(ellie_match)
   ellie.save()
 
-
   print('🥸  🥸  🥸')
-
-
-
-  
