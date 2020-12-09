@@ -2,21 +2,18 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { getUserId } from '../lib/UserToken'
-import Header from './Header'
 import Footer from './Navbar'
+import Back from '../images/previous.png'
 
 
-const Settings = () => {
+const Settings = (props) => {
   const userID = getUserId()
   const [currUser, updateCurrUser] = useState({})
 
-  useEffect(() => {
-    axios.get(`/api/users/${userID}`)
-      .then(res => {
-        updateCurrUser(res.data)
-        console.log(res.data)
-      })
-  }, [])
+  function handleLogout() {
+    localStorage.removeItem('token')
+    props.history.push('/')
+  }
 
   function handleGenderPref(event) {
     const value = event.target.value
@@ -24,14 +21,26 @@ const Settings = () => {
       ...currUser,
       gender_preference: value
     }
-    updateCurrUser(data)
-    console.log(data)
+    axios.put(`/api/users/${userID}/update`, data)
+      .then(res => {
+        console.log(res.data)
+      })
   }
 
-
-
   return <main className="settingsMain">
-    <Header />
+    <header>
+      <div>
+        <img src={Back} alt="back"/>
+      </div>
+      <div>
+        <h1>Spoondr.</h1>
+      </div>
+      <div>
+        {localStorage.getItem('token')
+          && <img onClick={handleLogout} src={'https://www.flaticon.com/svg/static/icons/svg/1828/1828427.svg'} alt={'signout'}/>}
+      </div>
+    </header>
+
     <form>
       <label>Looking for
         <select name="gender_preference" onChange={handleGenderPref}>
