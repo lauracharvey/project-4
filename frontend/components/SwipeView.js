@@ -37,7 +37,7 @@ const Swipe = (props) => {
       })
   }, [])
 
- 
+
 
   function filterMatched(resData, tempAllUsers) {
     if (resData.matches === undefined) return
@@ -51,25 +51,25 @@ const Swipe = (props) => {
     })
     return updateFilteredUsers(filter.filter(user => user !== undefined))
   }
-  
+
   const swiped = (direction, id) => {
     const token = localStorage.getItem('token')
 
-    if (direction === 'right'){
+    if (direction === 'right') {
       setLastDirection(direction)
       alreadyRemoved.push(id)
       console.log('Right')
-      axios.put(`/api/users/${id}/like`,'', {
+      axios.put(`/api/users/${id}/like`, '', {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then(resp => {
           console.log(resp.data)
         })
 
-    } else if (direction === 'left'){
+    } else if (direction === 'left') {
       setLastDirection(direction)
       alreadyRemoved.push(id)
-      axios.put(`/api/users/${id}/dislike`,'', {
+      axios.put(`/api/users/${id}/dislike`, '', {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then(resp => {
@@ -77,17 +77,17 @@ const Swipe = (props) => {
         })
       console.log('left', id)
 
-    } else if (direction === 'up'){
+    } else if (direction === 'up') {
       setLastDirection(direction)
       alreadyRemoved.push(id)
       console.log('up')
-      axios.put(`/api/users/${id}/like`,'', {
+      axios.put(`/api/users/${id}/like`, '', {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then(resp => {
           console.log(resp.data)
         })
-    } 
+    }
   }
 
   function goToProfile() {
@@ -99,8 +99,6 @@ const Swipe = (props) => {
   if (!currUser.matches) {
     return <h1>LOADING</h1>
   }
-
-
 
 
   return <main className="swipeMain">
@@ -120,7 +118,7 @@ const Swipe = (props) => {
 
     <div className="smallButtonContainer">
       <div className="smallButton">
-        <img src={UserProfile} alt="userprofile" onClick={goToProfile}/>
+        <img src={UserProfile} alt="userprofile" onClick={goToProfile} />
       </div>
       <div className="smallButton">
         <img src={Superlike} alt="superlike" />

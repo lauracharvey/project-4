@@ -12,7 +12,8 @@ const BasicSignUp = (props) => {
     bio: '',
     location: '',
     age: '',
-    gender: ''
+    gender: '',
+    gender_preference: ''
   })
 
   function handleChange(event) {
@@ -25,11 +26,20 @@ const BasicSignUp = (props) => {
     updateSignupFormData(data)
   }
 
-  function handleSelect(event) {
+  function handleGender(event) {
     const value = event.target.id
     const data = {
       ...signupFormData,
       gender: value
+    }
+    updateSignupFormData(data)
+  }
+
+  function handleGenderPref(event) {
+    const value = event.target.id
+    const data = {
+      ...signupFormData,
+      gender_preference: value
     }
     updateSignupFormData(data)
   }
@@ -113,27 +123,53 @@ const BasicSignUp = (props) => {
       <label>Gender
         <input 
           type="radio"
-          id="male"
+          id="Male"
           name="gender"
-          onFocus={handleSelect}
+          onFocus={handleGender}
         />
         <label htmlFor="male">Male</label>
 
         <input 
           type="radio"
-          id="female"
+          id="Female"
           name="gender"
-          onFocus={handleSelect}
+          onFocus={handleGender}
         />
         <label htmlFor="female">Female</label>
 
         <input 
           type="radio"
-          id="other"
+          id="Other"
           name="gender"
-          onFocus={handleSelect}
+          onFocus={handleGender}
         />
-        <label htmlFor="female">Other</label>
+        <label htmlFor="other">Other</label>
+      </label>
+
+      <label>Looking for
+        <input 
+          type="radio"
+          id="Male"
+          name="gender"
+          onFocus={handleGenderPref}
+        />
+        <label htmlFor="male">Male</label>
+
+        <input 
+          type="radio"
+          id="Female"
+          name="gender"
+          onFocus={handleGenderPref}
+        />
+        <label htmlFor="female">Female</label>
+
+        <input 
+          type="radio"
+          id="Other"
+          name="gender"
+          onFocus={handleGenderPref}
+        />
+        <label htmlFor="other">Other</label>
       </label>
 
       <button>Submit</button>

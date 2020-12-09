@@ -7,8 +7,42 @@ import Footer from './Navbar'
 
 const Settings = () => {
   const userID = getUserId()
+
+  function handleSelect(e) {
+    console.log(e.target.id)
+  }
+
   return <main className="settingsMain">
     <Header/>
+    <form>
+      <select name='genderpreference' defaultChecked={'Male'}>
+        <label>Looking for:
+          <input 
+            type="radio"
+            id="Male"
+            name="gender"
+            onFocus={handleSelect}
+        />
+        <label htmlFor="male">Male</label>
+
+        <input 
+          type="radio"
+          id="Female"
+          name="gender"
+          onFocus={handleSelect}
+        />
+        <label htmlFor="female">Female</label>
+
+        <input 
+          type="radio"
+          id="Other"
+          name="gender"
+          onFocus={handleSelect}
+        />
+        <label htmlFor="other">Other</label>
+      </label>
+      </select>
+    </form>
     <Footer/>
   </main>
 }
