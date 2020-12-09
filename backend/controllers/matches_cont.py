@@ -86,7 +86,9 @@ def remove_match(user_id):
   print(remove_matches.Matched)
 
   curr_matches.Matched.remove(remove_user.id)
+  curr_matches.Disliked.append(remove_user.id)
   remove_matches.Matched.remove(current_user.id)
+  remove_matches.Disliked.append(current_user.id)
 
   print(curr_matches.Matched)
   print(remove_matches.Matched)
@@ -97,4 +99,4 @@ def remove_match(user_id):
   current_user.save()
   remove_user.save()
 
-  return user_schema.jsonify(current_user)
+  return matches_schema.jsonify(curr_matches)
