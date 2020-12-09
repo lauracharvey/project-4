@@ -15,13 +15,13 @@ const Matches = (props) => {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(resp => {
-        console.log(resp.data.Matched)
+
         updateMatches(resp.data.Matched)
       })
 
     axios.get('/api/users')
       .then(resp => {
-        console.log(resp.data)
+
         updateAllUsers(resp.data)
       })
   }, [])
@@ -42,25 +42,25 @@ const Matches = (props) => {
     <div className="chatContainer">
 
     </div>
-    <Header/>
+    <Header />
     <h2>your matches - tap to chat</h2>
     <div className="matchesContainer">
       {filterMatched().map((user, index) => {
-      const userChats = user.chats.filter((chat) => {
-        return chat.user1 === 3 || chat.user2 === 3
-      })
-      console.log(userChats[0].id)
-      return <div key={index}>
-        <Link to={`/matches/chat/${userChats[0].id}`}>
-          <div className="userImage">
-          <img src={user.images[0].image1}/>
-          </div>
-        </Link>
-      </div>
-    })}
+        const userChats = user.chats.filter((chat) => {
+          return chat.user1 === 3 || chat.user2 === 3
+        })
+        console.log(userChats[0].id)
+        return <div key={index}>
+          <Link to={`/matches/chat/${userChats[0].id}`}>
+            <div className="userImage">
+              <img src={user.images[0].image1} />
+            </div>
+          </Link>
+        </div>
+      })}
     </div>
-    
-    <Footer/>
+
+    <Footer />
   </main>
 
 
