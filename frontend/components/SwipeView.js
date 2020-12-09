@@ -4,11 +4,8 @@ import TinderCard from 'react-tinder-card'
 import { getUserId } from '../lib/UserToken'
 import Navbar from '../components/Navbar'
 import Header from '../components/Header'
-import Like from '../images/like.png'
-import Dislike from '../images/dislike.png'
 import Superlike from '../images/superlike.png'
 import UserProfile from '../images/multiple-users-silhouette.png'
-
 
 const Swipe = (props) => {
   const currUserID = getUserId()
@@ -36,8 +33,6 @@ const Swipe = (props) => {
         filterMatched(resData, tempAllUsers)
       })
   }, [])
-
-
 
   function filterMatched(resData, tempAllUsers) {
     if (resData.matches === undefined) return
@@ -99,7 +94,6 @@ const Swipe = (props) => {
   if (!currUser.matches) {
     return <h1>LOADING</h1>
   }
-
 
   return <main className="swipeMain">
     <Header />

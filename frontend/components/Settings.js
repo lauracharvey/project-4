@@ -6,7 +6,7 @@ import Header from './Header'
 import Footer from './Navbar'
 
 
-const Settings = () => {
+const Settings = (props) => {
   const userID = getUserId()
   const [currUser, updateCurrUser] = useState({})
 
@@ -24,8 +24,10 @@ const Settings = () => {
       ...currUser,
       gender_preference: value
     }
-    updateCurrUser(data)
-    console.log(data)
+    axios.put(`/api/users/${userID}/update`, data)
+      .then(res => {
+        console.log(res.data)
+      })
   }
 
 
