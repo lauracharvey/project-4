@@ -16,7 +16,6 @@ const Profile = (props) => {
       .then(res => {
         const resData = res.data
         updateUser(resData)
-        console.log(resData)
 
         let images = []
         Object.keys(resData.images[0]).map((key) => {

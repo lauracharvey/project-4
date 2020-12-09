@@ -340,6 +340,15 @@ header {
   align-items: center;
   background: var(--extraLight);
 
+  header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
   h2 {
     margin: 0;
     padding: 0;
@@ -575,7 +584,7 @@ header {
     justify-content: center;
   }
 
-  input, button, textarea {
+  select {
     width: 100%;
     height: 40px;
     margin: 10px 0 10px 0;
@@ -584,10 +593,6 @@ header {
     font-size: 15px;
     padding-left: 10px;
     box-shadow: 0 0 3px var(--lightBrown);
-  }
-
-  textarea {
-    height: 100px;
   }
 
   label {

@@ -10,6 +10,13 @@ const Settings = (props) => {
   const userID = getUserId()
   const [currUser, updateCurrUser] = useState({})
 
+  useEffect(() => {
+    axios.get(`/api/users/${userID}`)
+      .then(res => {
+        updateCurrUser(res.data)
+      })
+  }, [])
+
   function handleLogout() {
     localStorage.removeItem('token')
     props.history.push('/')
@@ -23,14 +30,16 @@ const Settings = (props) => {
     }
     axios.put(`/api/users/${userID}/update`, data)
       .then(res => {
-        console.log(res.data)
+        return
       })
   }
 
   return <main className="settingsMain">
     <header>
       <div>
+        <Link to={'/swipe'}>
         <img src={Back} alt="back"/>
+        </Link>
       </div>
       <div>
         <h1>Spoondr.</h1>
@@ -40,9 +49,9 @@ const Settings = (props) => {
           && <img onClick={handleLogout} src={'https://www.flaticon.com/svg/static/icons/svg/1828/1828427.svg'} alt={'signout'}/>}
       </div>
     </header>
-
+    
     <form>
-      <label>Looking for
+      <label>Looking for:
         <select name="gender_preference" onChange={handleGenderPref}>
           <option disabled selected>Please Select</option>
           <option value="Male">Male</option>

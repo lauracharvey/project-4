@@ -1,8 +1,9 @@
 import React, { useState, UseEffect, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import Header from '../components/Header'
 import Footer from '../components/Navbar'
+import Back from '../images/previous.png'
+import Settings from '../images/settings.png'
 
 const Matches = (props) => {
 
@@ -47,9 +48,24 @@ const Matches = (props) => {
       })
   }
 
-  console.log(filterMatched())
+
   return <main className="matchesMain">
-    <Header />
+    <header>
+      <div>
+        <Link to={'/swipe'}>
+        <img src={Back} alt="back"/>
+        </Link>
+      </div>
+      <div>
+        <h1>Spoondr.</h1>
+      </div>
+      <div>
+        <Link to={'/settings'}>
+          <img src={Settings} alt='settings'></img>
+        </Link>
+        
+      </div>
+    </header>
     <div className="matchesContainer">
       {filterMatched().map((user, index) => {
         const userChats = user.chats.filter((chat) => {
