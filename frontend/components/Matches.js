@@ -39,23 +39,22 @@ const Matches = (props) => {
 
   console.log(filterMatched())
   return <main className="matchesMain">
-    <div className="chatContainer">
-
-    </div>
     <Header />
-    <h2>your matches - tap to chat</h2>
     <div className="matchesContainer">
       {filterMatched().map((user, index) => {
         const userChats = user.chats.filter((chat) => {
           return chat.user1 === 3 || chat.user2 === 3
         })
-        console.log(userChats[0].id)
-        return <div key={index}>
-          <Link to={`/matches/chat/${userChats[0].id}`}>
-            <div className="userImage">
-              <img src={user.images[0].image1} />
-            </div>
-          </Link>
+        return <div className="userDetails" key={index}>
+          <div className="userImage">
+            <img src={user.images[0].image1} />
+          </div>
+          <div className="buttonContainer">
+            <Link to={`/matches/chat/${userChats[0].id}`}>
+              <button>Chat</button>
+            </Link>
+            <button>Unspoon</button>
+          </div>
         </div>
       })}
     </div>

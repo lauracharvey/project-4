@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Slide } from 'react-slideshow-image'
 import 'react-slideshow-image/dist/styles.css'
+import Header from './Header'
+import Footer from './Navbar'
 
 
 const Profile = (props) => {
@@ -31,8 +33,10 @@ const Profile = (props) => {
     return <h1>LOADING</h1>
   }
 
-  return <main className="maining">
-    <div className="slide-container">
+  return <main className="userProfileMain">
+    <Header />
+    <div>
+      <div className="slide-container">
       <Slide autoplay={false} infinite={false}>
         {slideImages.map((image, ind) => {
           return <div key={ind} className="each-slide">
@@ -42,38 +46,46 @@ const Profile = (props) => {
         })}
       </Slide>
     </div>
-    <label>Name:
-      <p>{user.first_name}</p>
-    </label>
-    <label>Age:
-      <p>{user.age}</p>
-    </label>
-    <label>Bio:
-      <p>{user.bio}</p>
-    </label>
-    <label>Location:
-      <p>{user.location}</p>
-    </label>
-    {user.interests[0] && <label>Interests:
+    </div>
+    
+    <div className="userInfo">
+      <h2>{user.first_name}, {user.age}</h2>
+      <hr></hr>
+      <p>Gender: {user.gender}</p>
+      <hr></hr>
+      <p className="bio">{user.bio}</p>
+      <hr></hr>
+      <p>Location: {user.location}</p>
+      <hr></hr>
+      {user.interests[0] && <label>Interests:
       {user.interests.map((int, ind) => {
-        return <p key={ind}>{int.name}</p>
+        return <p className="interest" key={ind}>{int.name}</p>
       })}
-    </label>}
-    {user.socials[0].Instagram && <label>Instagram:
-      <a>{user.socials[0].Instagram}</a>      
-    </label>}
+      </label>}
 
-    {user.socials[0].Facebook && <label>Facebook:
-      <a>{user.socials[0].Facebook}</a>      
-    </label>}
+      <h3>
+        Check out {user.first_name} on Social Media
+      </h3>
 
-    {user.socials[0].Spotify && <label>Spotify:
-      <a>{user.socials[0].Spotify}</a>      
-    </label>}
+      <div className="socialsContainer">
+        <a href={user.socials[0].Instagram}>
+          <img src={'https://www.flaticon.com/svg/static/icons/svg/2111/2111463.svg'} />
+        </a>
 
-    {user.socials[0].LinkedIn && <label>LinkedIn:
-      <a>{user.socials[0].LinkedIn}</a>      
-    </label>}
+        <a href={user.socials[0].Facebook}>
+          <img src={'https://www.flaticon.com/svg/static/icons/svg/733/733547.svg'} />
+        </a>
+
+        <a href={user.socials[0].Spotify}>
+          <img src={'https://www.flaticon.com/svg/static/icons/svg/2111/2111624.svg'} />
+        </a>
+
+        <a href={user.socials[0].LinkedIn}>
+          <img src={'https://www.flaticon.com/svg/static/icons/svg/174/174857.svg'} />
+        </a>
+      </div>
+    </div>
+    <Footer />
   </main>
 }
 
