@@ -15,13 +15,13 @@ const Settings = () => {
   return <main className="settingsMain">
     <Header/>
     <form>
-      
-      <label>Looking for:
-        <input 
-          type="radio"
-          id="Male"
-          name="gender"
-          onFocus={handleSelect}
+      <select name='genderpreference' defaultChecked={'Male'}>
+        <label>Looking for:
+          <input 
+            type="radio"
+            id="Male"
+            name="gender"
+            onFocus={handleSelect}
         />
         <label htmlFor="male">Male</label>
 
@@ -41,6 +41,7 @@ const Settings = () => {
         />
         <label htmlFor="other">Other</label>
       </label>
+      </select>
     </form>
     <Footer/>
   </main>
