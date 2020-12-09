@@ -17,6 +17,7 @@ const Swipe = (props) => {
   const [filteredUsers, updateFilteredUsers] = useState([])
   const [lastDirection, setLastDirection] = useState()
   let swipeUserID
+  const alreadyRemoved = []
 
   useEffect(() => {
     let resData
@@ -36,7 +37,7 @@ const Swipe = (props) => {
       })
   }, [])
 
-  const alreadyRemoved = []
+
 
   function filterMatched(resData, tempAllUsers) {
     if (resData.matches === undefined) return
@@ -50,25 +51,25 @@ const Swipe = (props) => {
     })
     return updateFilteredUsers(filter.filter(user => user !== undefined))
   }
-  
+
   const swiped = (direction, id) => {
     const token = localStorage.getItem('token')
 
-    if (direction === 'right'){
+    if (direction === 'right') {
       setLastDirection(direction)
       alreadyRemoved.push(id)
       console.log('Right')
-      axios.put(`/api/users/${id}/like`,'', {
+      axios.put(`/api/users/${id}/like`, '', {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then(resp => {
           console.log(resp.data)
         })
 
-    } else if (direction === 'left'){
+    } else if (direction === 'left') {
       setLastDirection(direction)
       alreadyRemoved.push(id)
-      axios.put(`/api/users/${id}/dislike`,'', {
+      axios.put(`/api/users/${id}/dislike`, '', {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then(resp => {
@@ -76,17 +77,17 @@ const Swipe = (props) => {
         })
       console.log('left', id)
 
-    } else if (direction === 'up'){
+    } else if (direction === 'up') {
       setLastDirection(direction)
       alreadyRemoved.push(id)
       console.log('up')
-      axios.put(`/api/users/${id}/like`,'', {
+      axios.put(`/api/users/${id}/like`, '', {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then(resp => {
           console.log(resp.data)
         })
-    } 
+    }
   }
 
   function goToProfile() {
@@ -94,10 +95,11 @@ const Swipe = (props) => {
   }
 
   const childRefs = useMemo(() => Array(filteredUsers.length).fill(0).map(i => React.createRef()), [])
-
+  console.log(childRefs)
   if (!currUser.matches) {
     return <h1>LOADING</h1>
   }
+
 
   return <main className="swipeMain">
     <Header />
@@ -116,18 +118,10 @@ const Swipe = (props) => {
 
     <div className="smallButtonContainer">
       <div className="smallButton">
-        <img src={UserProfile} alt="userprofile" onClick={goToProfile}/>
+        <img src={UserProfile} alt="userprofile" onClick={goToProfile} />
       </div>
       <div className="smallButton">
         <img src={Superlike} alt="superlike" />
-      </div>
-    </div>
-    <div className="largeButtonContainer">
-      <div className="largeButton">
-        <img className="dislike" src={Dislike} alt="dislike" />
-      </div>
-      <div className="largeButton">
-        <img className="like" src={Like} alt="like" />
       </div>
     </div>
     <Navbar />

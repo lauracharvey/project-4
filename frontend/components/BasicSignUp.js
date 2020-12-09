@@ -12,7 +12,8 @@ const BasicSignUp = (props) => {
     bio: '',
     location: '',
     age: '',
-    gender: ''
+    gender: '',
+    gender_preference: ''
   })
 
   function handleChange(event) {
@@ -30,6 +31,15 @@ const BasicSignUp = (props) => {
     const data = {
       ...signupFormData,
       gender: value
+    }
+    updateSignupFormData(data)
+  }
+
+  function handleGenderPref(event) {
+    const value = event.target.id
+    const data = {
+      ...signupFormData,
+      gender_preference: value
     }
     updateSignupFormData(data)
   }
