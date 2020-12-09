@@ -2,6 +2,10 @@ import React, { useState, UseEffect, useEffect } from 'react'
 import axios from 'axios'
 import { getUserId } from '../lib/UserToken'
 import io from 'socket.io-client'
+import Footer from './Navbar'
+import Send from '../images/send.png'
+import Back from '../images/previous.png'
+import { Link } from 'react-router-dom'
 
 const endPoint = 'http://localhost:5000'
 
@@ -87,17 +91,38 @@ const ChatPage = (props) => {
     }
   }
 
-
-
-  return <div>
-    {messages.map((msg, key) => {
-      return <div key={key}>
-        <p>{msg}</p>
+  return <main className="chatMain">
+    <header>
+      <div className="backButton">
+        <Link to={'/matches'}>
+        <img src={Back} alt="back"/>
+        </Link>
       </div>
-    })}
-    <input value={message} name="message" onChange={e => onChange(e)} />
-    <button onClick={() => onClick()}>Send Message</button>
-  </div>
+      <div className="heading">
+         <h1>Spoondr.</h1>
+      </div>
+      <div className="backButton"></div>
+    </header>
+    <div className="chatContainer">
+      <div className="chatInner">
+        {messages.map((msg, key) => {
+        return <div key={key}>
+          <p>{msg}</p>
+        </div>
+      })}
+      </div>
+      <div className="chatInput">
+        <input value={message} name="message" onChange={e => onChange(e)} />
+      <button onClick={() => onClick()}>
+        <img src={Send} alt="send message" />
+      </button>
+      </div>
+      
+    </div>
+
+
+    <Footer />
+  </main>
 }
 
 export default ChatPage

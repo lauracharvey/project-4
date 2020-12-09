@@ -70,7 +70,7 @@ const UpdateProfile = (props) => {
     axios.put(`/api/users/${userID}/update`, data)
       .then(res => {
         console.log(res.data)
-        props.history.push('/swipes')
+        props.history.push('/swipe')
       })
   }
 

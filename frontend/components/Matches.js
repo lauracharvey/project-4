@@ -1,6 +1,8 @@
 import React, { useState, UseEffect, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import Header from '../components/Header'
+import Footer from '../components/Navbar'
 
 const Matches = (props) => {
 
@@ -35,6 +37,7 @@ const Matches = (props) => {
     return filter.filter(user => user !== undefined)
   }
 
+<<<<<<< HEAD
 
   return <div>
     <h1>Matches</h1>
@@ -48,12 +51,33 @@ const Matches = (props) => {
         <h2>{user.first_name}</h2>
         <p>{user.bio}</p>
         <p>User Chat ID = {userChats[0].id}</p>
+=======
+  console.log(filterMatched())
+  return <main className="matchesMain">
+    <div className="chatContainer">
+
+    </div>
+    <Header/>
+    <h2>your matches - tap to chat</h2>
+    <div className="matchesContainer">
+      {filterMatched().map((user, index) => {
+      const userChats = user.chats.filter((chat) => {
+        return chat.user1 === 3 || chat.user2 === 3
+      })
+      console.log(userChats[0].id)
+      return <div key={index}>
+>>>>>>> development
         <Link to={`/matches/chat/${userChats[0].id}`}>
-          <button>Chat now!</button>
+          <div className="userImage">
+          <img src={user.images[0].image1}/>
+          </div>
         </Link>
       </div>
     })}
-  </div>
+    </div>
+    
+    <Footer/>
+  </main>
 
 
 }

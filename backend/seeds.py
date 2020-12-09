@@ -121,6 +121,150 @@ with app.app_context():
   lee.matches.append(lee_match)
   lee.save()
 
+  alexia = User(
+    first_name='Alexia',
+    email='alexia@alexia.com',
+    password='alexia',
+    bio='Spoony Woony',
+    location='CT1',
+    age='21',
+    interests=[spooning],
+    socials=[harry_socials],
+    images=[harry_images],
+    chats=[]
+  )
+  alexia.save()
+
+  alexia_match = Matches(
+    Liked=[alexia.id],
+    LikedBy=[],
+    Matched=[],
+    Disliked=[]
+  )
+
+  alexia.matches.append(alexia_match)
+  alexia.save()
+
+  gigi = User(
+    first_name='Gigi',
+    email='gigi@gigi.com',
+    password='gigi',
+    bio='Woof',
+    location='CT1',
+    age='3',
+    interests=[spooning],
+    socials=[harry_socials],
+    images=[harry_images],
+    chats=[]
+  )
+  gigi.save()
+
+  gigi_match = Matches(
+    Liked=[gigi.id],
+    LikedBy=[],
+    Matched=[],
+    Disliked=[]
+  )
+
+  gigi.matches.append(gigi_match)
+  gigi.save()
+
+  joe = User(
+    first_name='Joe',
+    email='joe@joe.com',
+    password='joe',
+    bio='Hi',
+    location='CT1',
+    age='26',
+    interests=[spooning],
+    socials=[harry_socials],
+    images=[harry_images],
+    chats=[]
+  )
+  joe.save()
+
+  joe_match = Matches(
+    Liked=[joe.id],
+    LikedBy=[],
+    Matched=[],
+    Disliked=[]
+  )
+
+  joe.matches.append(joe_match)
+  joe.save()
+
+  jon = User(
+    first_name='Jon',
+    email='jon@jon.com',
+    password='jon',
+    bio='No one touch me',
+    location='CT1',
+    age='49',
+    interests=[spooning],
+    socials=[harry_socials],
+    images=[harry_images],
+    chats=[]
+  )
+  jon.save()
+
+  jon_match = Matches(
+    Liked=[jon.id],
+    LikedBy=[],
+    Matched=[],
+    Disliked=[]
+  )
+
+  jon.matches.append(jon_match)
+  jon.save()
+
+  megan = User(
+    first_name='Megan',
+    email='megan@megan.com',
+    password='megan',
+    bio='Yaaaaas',
+    location='CT1',
+    age='25',
+    interests=[spooning],
+    socials=[harry_socials],
+    images=[harry_images],
+    chats=[]
+  )
+  megan.save()
+
+  megan_match = Matches(
+    Liked=[megan.id],
+    LikedBy=[],
+    Matched=[],
+    Disliked=[]
+  )
+
+  megan.matches.append(megan_match)
+  megan.save()
+
+  ellie = User(
+    first_name='Ellie',
+    email='ellie@ellie.com',
+    password='ellie',
+    bio='Up for any kind of spoon',
+    location='CT1',
+    age='20',
+    interests=[spooning],
+    socials=[harry_socials],
+    images=[harry_images],
+    chats=[]
+  )
+  ellie.save()
+
+  ellie_match = Matches(
+    Liked=[ellie.id],
+    LikedBy=[],
+    Matched=[],
+    Disliked=[]
+  )
+
+  ellie.matches.append(ellie_match)
+  ellie.save()
+
 
   print('🥸  🥸  🥸')
 

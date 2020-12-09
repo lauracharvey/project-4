@@ -43,7 +43,7 @@ const Home = (props) => {
         onChange={handleChange}
         value={loginFormData.password}
         name="password"
-        placeholder="********"
+        placeholder="&#10034; &#10034; &#10034; &#10034; &#10034; &#10034;"
       />
       <button>Login</button>
       <p>not registered yet?</p>
