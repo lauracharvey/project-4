@@ -113,7 +113,7 @@ const BasicSignUp = (props) => {
       <label>Gender
         <input 
           type="radio"
-          id="male"
+          id="Male"
           name="gender"
           onFocus={handleSelect}
         />
@@ -121,7 +121,7 @@ const BasicSignUp = (props) => {
 
         <input 
           type="radio"
-          id="female"
+          id="Female"
           name="gender"
           onFocus={handleSelect}
         />
@@ -129,7 +129,7 @@ const BasicSignUp = (props) => {
 
         <input 
           type="radio"
-          id="other"
+          id="Other"
           name="gender"
           onFocus={handleSelect}
         />

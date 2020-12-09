@@ -8,34 +8,26 @@ import Footer from './Navbar'
 const Settings = () => {
   const userID = getUserId()
 
-  let maleProps = {
-    type: 'radio',
-    id: 'male',
-    name: 'gender',
-    onFocus: handleSelect
-  }
-
-
-
   function handleSelect(e) {
     console.log(e.target.id)
   }
 
-
-
-
   return <main className="settingsMain">
     <Header/>
     <form>
+      
       <label>Looking for:
         <input 
-          {...maleProps}
+          type="radio"
+          id="Male"
+          name="gender"
+          onFocus={handleSelect}
         />
         <label htmlFor="male">Male</label>
 
         <input 
           type="radio"
-          id="female"
+          id="Female"
           name="gender"
           onFocus={handleSelect}
         />
@@ -43,7 +35,7 @@ const Settings = () => {
 
         <input 
           type="radio"
-          id="other"
+          id="Other"
           name="gender"
           onFocus={handleSelect}
         />
