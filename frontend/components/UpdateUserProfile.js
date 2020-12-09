@@ -163,9 +163,8 @@ const UpdateProfile = (props) => {
   }
 
   return <main className="updateUserProfileMain">
-    <Header />
-    <div className="profileInner">
-      <form>
+    <Header/>
+      <form className="userForm">
         <label>First Name
         <input
             type="text"
@@ -197,8 +196,7 @@ const UpdateProfile = (props) => {
         <img
           src={currUserImages.image1}
           alt="Upload"
-          width="100"
-          height="125"
+          width="300"
           name="image1"
           onClick={(e) => handleImage(e.target.name)}
         />
@@ -208,8 +206,7 @@ const UpdateProfile = (props) => {
         <img
           src={currUserImages.image2}
           alt="Upload"
-          width="100"
-          height="125"
+          width="300"
           name="image2"
           onClick={(e) => handleImage(e.target.name)}
         />
@@ -219,8 +216,7 @@ const UpdateProfile = (props) => {
         <img
           src={currUserImages.image3}
           alt="Upload"
-          width="100"
-          height="125"
+          width="300"
           name="image3"
           onClick={(e) => handleImage(e.target.name)}
         />
@@ -230,8 +226,7 @@ const UpdateProfile = (props) => {
         <img
           src={currUserImages.image4}
           alt="Upload"
-          width="100"
-          height="125"
+          width="300"
           name="image4"
           onClick={(e) => handleImage(e.target.name)}
         />
@@ -241,8 +236,7 @@ const UpdateProfile = (props) => {
         <img
           src={currUserImages.image5}
           alt="Upload"
-          width="100"
-          height="125"
+          width="300"
           name="image5"
           onClick={(e) => handleImage(e.target.name)}
         />
@@ -287,10 +281,12 @@ const UpdateProfile = (props) => {
 
         {/* ***** INTERESTS ***** */}
         <label>My Interests</label>
-        {currInterests.map((el, i) => {
-          return <div onClick={(e) => handleRemoveInterests(el)} key={i}>{el.name}</div>
+        <div className="interestsOuter">
+          {currInterests.map((el, i) => {
+          return <div className="interest" onClick={(e) => handleRemoveInterests(el)} key={i}>{el.name}</div>
         })}
-
+        </div>
+        
         <label>Click To Add Interests</label>
         <div className="interestsOuter">
           {interests.map((el, i) => {
@@ -312,17 +308,8 @@ const UpdateProfile = (props) => {
         </label>
 
         <button onClick={handleSubmit}>SUBMIT</button>
-
       </form>
-
-
-
-
-
-
-    </div>
-
-    <Footer />
+    <Footer/>
   </main>
 }
 
