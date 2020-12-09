@@ -37,6 +37,16 @@ const Matches = (props) => {
     return filter.filter(user => user !== undefined)
   }
 
+  function unspoon(id) {
+    const token = localStorage.getItem('token')
+    axios.put(`/api/users/${id}/removematch`, '', {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(resp => {
+        updateMatches(resp.data.Matched)
+      })
+  }
+
   console.log(filterMatched())
   return <main className="matchesMain">
     <Header />
@@ -53,7 +63,7 @@ const Matches = (props) => {
             <Link to={`/matches/chat/${userChats[0].id}`}>
               <button>Chat</button>
             </Link>
-            <button>Unspoon</button>
+            <button onClick={() => unspoon(user.id)}>Unspoon</button>
           </div>
         </div>
       })}

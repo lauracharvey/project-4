@@ -38,7 +38,11 @@ const Swipe = (props) => {
     if (resData.matches === undefined) return
     const likeDislike = [...resData.matches[0].Liked, resData.matches[0].Disliked, resData.matches[0].Matched].flat()
     const currLikes = likeDislike
-    const filter = tempAllUsers.map(user => {
+    const userPref = resData.gender_preference 
+    const prefFilter = tempAllUsers.filter(user => {
+      return user.gender === userPref || userPref === 'Both'
+    })
+    const filter = prefFilter.map(user => {
       const num = currLikes.indexOf(user.id)
       if (num !== -1) {
         return
@@ -46,6 +50,7 @@ const Swipe = (props) => {
     })
     return updateFilteredUsers(filter.filter(user => user !== undefined))
   }
+  
 
   const swiped = (direction, id) => {
     const token = localStorage.getItem('token')
