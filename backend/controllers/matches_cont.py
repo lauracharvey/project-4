@@ -71,3 +71,30 @@ def get_matches():
   
   current_matches = Matches.query.get(g.current_user.id)
   return matches_schema.jsonify(current_matches)
+
+
+@router.route('/users/<int:user_id>/removematch', methods=['PUT'])
+@secure_route
+def remove_match(user_id):
+  current_user = g.current_user
+  remove_user = User.query.get(user_id)
+
+  curr_matches = Matches.query.get(current_user.id)
+  remove_matches = Matches.query.get(remove_user.id)
+
+  print(curr_matches.Matched)
+  print(remove_matches.Matched)
+
+  curr_matches.Matched.remove(remove_user.id)
+  remove_matches.Matched.remove(current_user.id)
+
+  print(curr_matches.Matched)
+  print(remove_matches.Matched)
+
+
+  curr_matches.save()
+  remove_matches.save()
+  current_user.save()
+  remove_user.save()
+
+  return user_schema.jsonify(current_user)

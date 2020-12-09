@@ -7,6 +7,10 @@ class MutableList(Mutable, list):
     def append(self, value):
         list.append(self, value)
         self.changed()
+    
+    def remove(self, value):
+      list.remove(self, value)
+      self.changed()
 
     @classmethod
     def coerce(cls, key, value):
