@@ -20,8 +20,7 @@ const ChatPage = (props) => {
   const [currentUser, updateCurrentUser] = useState('')
   const [connected, updateConnect] = useState(false)
 
-  console.log(io)
-  console.log('hello')
+
 
 
   useEffect(() => {
@@ -56,7 +55,7 @@ const ChatPage = (props) => {
       })
   }, [])
 
-
+  console.log('hello')
 
   const getMessages = () => {
 
