@@ -15,6 +15,7 @@ flask-bcrypt = "*"
 pyjwt = "*"
 flask-socketio = "*"
 socketio-client = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.9"
