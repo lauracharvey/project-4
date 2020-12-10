@@ -20,12 +20,11 @@ const ChatPage = (props) => {
   const [connected, updateConnect] = useState(false)
 
 
-
+  const endpoint = 'https://project-4-lee.herokuapp.com/'
 
   useEffect(() => {
 
-    socket = io('https://project-4-lee.herokuapp.com/')
-    io.connect('https://project-4-lee.herokuapp.com/')
+    socket = io.connect('https://project-4-lee.herokuapp.com/')
     socket.on('connect', () => {
       socket.emit('join_room', {
         username: `${currentUser.first_name}`,
