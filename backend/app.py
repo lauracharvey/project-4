@@ -10,7 +10,7 @@ from flask_bcrypt import Bcrypt
 
 from flask_socketio import SocketIO, send
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='dist')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = db_URI
 
@@ -32,6 +32,19 @@ app.register_blueprint(images_cont.router, url_prefix="/api")
 app.register_blueprint(socials_cont.router, url_prefix="/api")
 app.register_blueprint(matches_cont.router, url_prefix="/api")
 app.register_blueprint(chat_cont.router, url_prefix="/api")
+
+import os
+
+@app.route('/', defaults={'path': ''}) # homepage
+@app.route('/<path:path>') # any other path
+def catch_all(path):
+    dirname = os.path.dirname(__file__)
+    filename = os.path.join(dirname, 'dist/' + path)
+
+    if os.path.isfile(filename): # if path is a file, send it back
+        return app.send_static_file(path)
+
+    return app.send_static_file('index.html') # otherwise send back the index.html file
 
 if __name__ == '__main__':
     sio.run(app)
