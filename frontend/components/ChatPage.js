@@ -23,7 +23,7 @@ const ChatPage = (props) => {
   const endpoint = 'https://project-4-lee.herokuapp.com/'
 
   useEffect(() => {
-    socket = io('https://project-4-lee.herokuapp.com/', { secure: true } )
+    socket = io('https://project-4-lee.herokuapp.com/', { secure: true })
     socket.connect()
     socket.on('connect', () => {
       socket.emit('join_room', {
@@ -33,7 +33,7 @@ const ChatPage = (props) => {
       console.log('connected!')
       updateConnect(true)
     })
-  
+
 
     console.log('check check')
     axios.get(`/api/users/${currUserID}`)
@@ -101,29 +101,29 @@ const ChatPage = (props) => {
     <header>
       <div className="backButton">
         <Link to={'/matches'}>
-        <img src={Back} alt="back"/>
+          <img src={Back} alt="back" />
         </Link>
       </div>
       <div className="heading">
-         <h1>Spoondr.</h1>
+        <h1>Spoondr.</h1>
       </div>
       <div className="backButton"></div>
     </header>
     <div className="chatContainer">
       <div className="chatInner">
         {messages.map((msg, key) => {
-        return <div key={key}>
-          <p>{msg}</p>
-        </div>
-      })}
+          return <div key={key}>
+            <p>{msg}</p>
+          </div>
+        })}
       </div>
       <div className="chatInput">
-        <input value={message} name="message" onChange={e => onChange(e)} />
-      <button onClick={() => onClick()}>
-        <img src={Send} alt="send message" />
-      </button>
+        <input value={message} name="message" onChange={e => onChange(e)} onSubmit={() => onClick()} />
+        <button onClick={() => onClick()}>
+          <img src={Send} alt="send message" />
+        </button>
       </div>
-      
+
     </div>
 
 
