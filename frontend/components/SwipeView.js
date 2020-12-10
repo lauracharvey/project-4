@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar'
 import Header from '../components/Header'
 import Superlike from '../images/superlike.png'
 import UserProfile from '../images/multiple-users-silhouette.png'
+import Modal from 'react-modal'
 
 const Swipe = (props) => {
   const currUserID = getUserId()
@@ -15,6 +16,7 @@ const Swipe = (props) => {
   const [lastDirection, setLastDirection] = useState()
   let swipeUserID
   const alreadyRemoved = []
+  const [lastMatch, updateLastMatch] = useState('')
 
   useEffect(() => {
     let resData
@@ -37,7 +39,7 @@ const Swipe = (props) => {
     if (resData.matches === undefined) return
     const likeDislike = [...resData.matches[0].Liked, resData.matches[0].Disliked, resData.matches[0].Matched].flat()
     const currLikes = likeDislike
-    const userPref = resData.gender_preference 
+    const userPref = resData.gender_preference
     const prefFilter = tempAllUsers.filter(user => {
       return user.gender === userPref || userPref === 'Both'
     })
@@ -49,7 +51,7 @@ const Swipe = (props) => {
     })
     return updateFilteredUsers(filter.filter(user => user !== undefined))
   }
-  
+
 
   const swiped = (direction, id) => {
     const token = localStorage.getItem('token')
@@ -61,7 +63,13 @@ const Swipe = (props) => {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then(resp => {
-          return
+          console.log(resp.data)
+          if (resp.data.message === 'match!') {
+            openMatchModal()
+            const position = allUsers.findIndex(e => e.id === Number(resp.data.id) )
+            updateLastMatch(allUsers[position].images[0].image1)
+            console.log(lastMatch)
+          }
         })
 
     } else if (direction === 'left') {
@@ -71,6 +79,7 @@ const Swipe = (props) => {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then(resp => {
+          console.log(resp.data)
           return
         })
 
@@ -81,6 +90,7 @@ const Swipe = (props) => {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then(resp => {
+          console.log(resp.data)
           return
         })
     }
@@ -91,11 +101,46 @@ const Swipe = (props) => {
   }
 
   const childRefs = useMemo(() => Array(filteredUsers.length).fill(0).map(i => React.createRef()), [])
+
+
+  // ! Modal ------------
+  
+
+  Modal.setAppElement('#root')
+
+  const [matchModalIsOpen, setMatchIsOpen] = useState(false)
+
+
+  function openMatchModal() {
+    setMatchIsOpen(true)
+  }
+
+  function closeMatchModal() {
+    setMatchIsOpen(false)
+  }
+
+
   if (!currUser.matches) {
     return <h1>LOADING</h1>
   }
 
+
+
+
   return <main className="swipeMain">
+
+    <Modal isOpen={matchModalIsOpen} contentLabel="Match Modal">
+      <div className="userDetails">
+        <img className="userImage" src={`${currUser.images[0].image1}`} />
+        <img className="userImage" src={`${lastMatch}`} />
+        <p>Spoon!</p>
+      </div>
+      <div className="buttonContainer">
+        <button className="button is-black" style={{ border: '3px solid white', margin: '20px', minWidth: '100px' }} onClick={() => closeMatchModal()}>ok</button>
+      </div>
+    </Modal>
+
+
     <Header />
     <div className="cardContainer">
       {filteredUsers.map((user, index) => {
