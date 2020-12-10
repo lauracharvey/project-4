@@ -7,7 +7,7 @@ import Send from '../images/send.png'
 import Back from '../images/previous.png'
 import { Link } from 'react-router-dom'
 
-const endPoint = 'http://localhost:5000'
+const endPoint = process.env.DATABASE_URL
 
 let socket = ''
 
