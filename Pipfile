@@ -16,6 +16,8 @@ pyjwt = "*"
 flask-socketio = "*"
 socketio-client = "*"
 gunicorn = "==0.16.1"
+eventlet = "*"
+gevent-websocket = "*"
 
 [requires]
 python_version = "3.9"
