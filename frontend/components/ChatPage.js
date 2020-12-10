@@ -11,6 +11,7 @@ const endPoint = process.env.DATABASE_URL
 
 let socket = ''
 
+
 const ChatPage = (props) => {
   const currUserID = getUserId()
   const [messages, setMessages] = useState([])
