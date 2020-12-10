@@ -66,7 +66,7 @@ const Swipe = (props) => {
           console.log(resp.data)
           if (resp.data.message === 'match!') {
             openMatchModal()
-            const position = allUsers.findIndex(e => e.id === Number(resp.data.id) )
+            const position = allUsers.findIndex(e => e.id === Number(resp.data.id))
             updateLastMatch(allUsers[position].images[0].image1)
             console.log(lastMatch)
           }
@@ -104,7 +104,7 @@ const Swipe = (props) => {
 
 
   // ! Modal ------------
-  
+
 
   Modal.setAppElement('#root')
 
@@ -124,22 +124,37 @@ const Swipe = (props) => {
     return <h1>LOADING</h1>
   }
 
-
-
-
   return <main className="swipeMain">
 
-    <Modal isOpen={matchModalIsOpen} contentLabel="Match Modal">
-      <div className="userDetails">
-        <img className="userImage" src={`${currUser.images[0].image1}`} />
-        <img className="userImage" src={`${lastMatch}`} />
-        <p>Spoon!</p>
+    <Modal
+      isOpen={matchModalIsOpen}
+      contentLabel="Match Modal"
+      portalClassName={"ReactModal"}
+      className="modalContent"
+      style={{
+        overlay: {
+          top: '100px',
+          bottom: '80px'
+        }
+      }}
+    >
+      <div className="matchDetails">
+        <div className="imageContainer">
+          <div className="imageInner">
+            <img src={`${currUser.images[0].image1}`} />
+          </div>
+
+          <div className="imageInner">
+            <img src={`${lastMatch}`} />
+          </div>
+        </div>
+
+        <h2>It's a Spoon!</h2>
       </div>
       <div className="buttonContainer">
         <button className="button is-black" style={{ border: '3px solid white', margin: '20px', minWidth: '100px' }} onClick={() => closeMatchModal()}>ok</button>
       </div>
     </Modal>
-
 
     <Header />
     <div className="cardContainer">
