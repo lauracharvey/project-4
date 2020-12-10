@@ -25,7 +25,7 @@ const ChatPage = (props) => {
 
   useEffect(() => {
 
-    this.socket = io('https://project-4-lee.herokuapp.com/')
+    socket = io('https://project-4-lee.herokuapp.com/')
     socket.on('connect', () => {
       socket.emit('join_room', {
         username: `${currentUser.first_name}`,
@@ -56,6 +56,8 @@ const ChatPage = (props) => {
   }, [])
 
   console.log('hello')
+  console.log(io)
+  console.log(socket)
 
   const getMessages = () => {
 
