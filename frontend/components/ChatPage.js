@@ -12,6 +12,7 @@ const endPoint = process.env.SOCKET_IO
 let socket = ''
 
 
+
 const ChatPage = (props) => {
   const currUserID = getUserId()
   const [messages, setMessages] = useState([])
@@ -19,8 +20,12 @@ const ChatPage = (props) => {
   const [currentUser, updateCurrentUser] = useState('')
   const [connected, updateConnect] = useState(false)
 
+  console.log(io)
+  console.log(endpoint)
+
+
   useEffect(() => {
-    socket = io.connect(`${endPoint}`)
+    socket = io.connect(`https://project-4-lee.herokuapp.com/`)
 
     socket.on('connect', () => {
       socket.emit('join_room', {
