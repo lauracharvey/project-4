@@ -10,6 +10,11 @@ from flask_bcrypt import Bcrypt
 
 from flask_socketio import SocketIO, send
 
+<<<<<<< HEAD
+=======
+import os
+
+>>>>>>> e1f5f47e653fbda1d095c45b141ab3de2f0149ec
 app = Flask(__name__, static_folder='dist')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = db_URI
@@ -47,4 +52,19 @@ def catch_all(path):
     return app.send_static_file('index.html') # otherwise send back the index.html file
 
 if __name__ == '__main__':
-    sio.run(app)
+    port = int(os.environ.get("PORT", 5000))
+    sio.run(app, host='0.0.0.0', port=port)
+
+
+
+
+@app.route('/', defaults={'path': ''}) # homepage
+@app.route('/<path:path>') # any other path
+def catch_all(path):
+    dirname = os.path.dirname(__file__)
+    filename = os.path.join(dirname, 'dist/' + path)
+
+    if os.path.isfile(filename): # if path is a file, send it back
+        return app.send_static_file(path)
+
+    return app.send_static_file('index.html') # otherwise send back the index.html file

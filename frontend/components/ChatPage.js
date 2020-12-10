@@ -7,9 +7,10 @@ import Send from '../images/send.png'
 import Back from '../images/previous.png'
 import { Link } from 'react-router-dom'
 
-const endPoint = 'http://localhost:5000'
 
 let socket = ''
+
+
 
 const ChatPage = (props) => {
   const currUserID = getUserId()
@@ -18,9 +19,13 @@ const ChatPage = (props) => {
   const [currentUser, updateCurrentUser] = useState('')
   const [connected, updateConnect] = useState(false)
 
-  useEffect(() => {
-    socket = io.connect(`${endPoint}`)
 
+
+
+  useEffect(() => {
+
+    socket = io('https://project-4-lee.herokuapp.com/')
+    io.connect('https://project-4-lee.herokuapp.com/')
     socket.on('connect', () => {
       socket.emit('join_room', {
         username: `${currentUser.first_name}`,
@@ -50,7 +55,9 @@ const ChatPage = (props) => {
       })
   }, [])
 
-
+  console.log('hello')
+  console.log(io)
+  console.log(socket)
 
   const getMessages = () => {
 
