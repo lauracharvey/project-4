@@ -34,8 +34,8 @@ module.exports = () => {
       historyApiFallback: true,
       proxy: {
         '/api': {
-          target: 'http://localhost:5000',
-          secure: false
+          target: 'https://project-4-lee.herokuapp.com/80',
+          secure: true
         }
       }
     },
