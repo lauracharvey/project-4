@@ -25,7 +25,8 @@ const ChatPage = (props) => {
 
 
   useEffect(() => {
-    socket = io.connect('https://project-4-lee.herokuapp.com/80', { secure: true })
+
+    socket = (io.connect('https://project-4-lee.herokuapp.com/80', { secure: true }), io('https://project-4-lee.herokuapp.com/80', { secure: true })
 
     socket.on('connect', () => {
       socket.emit('join_room', {
