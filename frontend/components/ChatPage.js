@@ -7,7 +7,6 @@ import Send from '../images/send.png'
 import Back from '../images/previous.png'
 import { Link } from 'react-router-dom'
 
-const endPoint = process.env.SOCKET_IO
 
 let socket = ''
 
