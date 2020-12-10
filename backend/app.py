@@ -35,8 +35,11 @@ app.register_blueprint(socials_cont.router, url_prefix="/api")
 app.register_blueprint(matches_cont.router, url_prefix="/api")
 app.register_blueprint(chat_cont.router, url_prefix="/api")
 
+
+
 if __name__ == '__main__':
-    sio.run(app)
+    port = int(os.environ.get("PORT", 5000))
+    sio.run(app, host='0.0.0.0', port=port)
 
 
 
