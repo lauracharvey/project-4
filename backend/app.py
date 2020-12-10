@@ -34,7 +34,7 @@ app.register_blueprint(matches_cont.router, url_prefix="/api")
 app.register_blueprint(chat_cont.router, url_prefix="/api")
 
 if __name__ == '__main__':
-    sio.run(app)
+    sio.run(app, port=int(os.environ.get('db_URI', '5000')))
 
 
 import os
