@@ -10,6 +10,8 @@ from flask_bcrypt import Bcrypt
 
 from flask_socketio import SocketIO, send
 
+import os
+
 app = Flask(__name__, static_folder='dist')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = db_URI
@@ -37,7 +39,7 @@ if __name__ == '__main__':
     sio.run(app, port=int(os.environ.get('db_URI', '5000')))
 
 
-import os
+
 
 @app.route('/', defaults={'path': ''}) # homepage
 @app.route('/<path:path>') # any other path
