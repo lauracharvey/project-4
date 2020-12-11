@@ -480,6 +480,7 @@ header {
 
   .chatInner {
     display: flex;
+    overflow-y: scroll;
     flex-direction: column;
     align-items: center;
     justify-content: center;
