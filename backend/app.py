@@ -10,11 +10,8 @@ from flask_bcrypt import Bcrypt
 
 from flask_socketio import SocketIO, send
 
-<<<<<<< HEAD
-=======
 import os
 
->>>>>>> e1f5f47e653fbda1d095c45b141ab3de2f0149ec
 app = Flask(__name__, static_folder='dist')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = db_URI
