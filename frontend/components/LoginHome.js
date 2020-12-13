@@ -23,8 +23,16 @@ const Home = (props) => {
 
     axios.post('/api/login', loginFormData)
       .then(resp => {
-        localStorage.setItem('token', resp.data.token)
-        props.history.push('/swipe')
+        if (resp.data.token) {
+          localStorage.setItem('token', resp.data.token)
+          props.history.push('/swipe')
+        } else {
+          updateLoginFormData({
+            email: '',
+            password: ''
+          })
+        }
+
       })
   }
 

@@ -4,9 +4,10 @@ import axios from 'axios'
 import Footer from '../components/Navbar'
 import Back from '../images/previous.png'
 import Settings from '../images/settings.png'
+import { getUserId } from '../lib/UserToken'
 
 const Matches = (props) => {
-
+  const currUserID = getUserId()
   const [matches, updateMatches] = useState([])
   const [allUsers, updateAllUsers] = useState([])
 
@@ -69,7 +70,7 @@ const Matches = (props) => {
     <div className="matchesContainer">
       {filterMatched().map((user, index) => {
         const userChats = user.chats.filter((chat) => {
-          return chat.user1 === 3 || chat.user2 === 3
+          return chat.user1 === currUserID || chat.user2 === currUserID
         })
         return <div className="userDetails" key={index}>
           <div className="userImage">

@@ -54,9 +54,7 @@ const ChatPage = (props) => {
       })
   }, [])
 
-  console.log('hello')
-  console.log(io)
-  console.log(socket)
+
 
   const getMessages = () => {
 
@@ -67,7 +65,6 @@ const ChatPage = (props) => {
       }
       axios.put(`/api/chat/${props.match.params.chatID}`, update)
         .then(resp => {
-          console.log(resp.data)
         })
     })
   }
